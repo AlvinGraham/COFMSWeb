@@ -1,0 +1,64 @@
+#register-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+#register-div label {
+  height: 50px;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+}
+
+#register-div input {
+  height: 50px;
+  width: 400px;
+  background-color: white;
+  color: black;
+  margin: 0;
+  font-size: 24px;
+}
+
+#register-div button {
+  height: 50px;
+  min-width: 250px;
+  background-color: grey;
+}
+
+#register-div .entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 580px;
+  margin: 5px 0px;
+}
+
+#register-div .entry.admin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 580px;
+  margin: 5px 0px;
+  align-self: center;
+}
+
+#register-div label.admin {
+  height: 50px;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+}
+
+#register-div input.admin {
+  height: 20px;
+  width: 20px;
+  background-color: white;
+  color: black;
+  margin: 0;
+  font-size: 24px;
+}

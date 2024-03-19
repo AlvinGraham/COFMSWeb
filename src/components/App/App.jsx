@@ -24,6 +24,7 @@ import './App.css';
 import Home from '../Home/Home';
 import Header from '../Header/Header';
 import Login from '../Login/Login';
+import Register from '../Register/Register';
 
 function App() {
   const dispatch = useDispatch();
@@ -89,14 +90,15 @@ function App() {
           <Route
             exact
             path="/registration">
-            {user.id ? (
+            {/* {user.id ? (
               // If the user is already logged in,
               // redirect them to the /user page
               <Redirect to="/user" />
             ) : (
               // Otherwise, show the registration page
               <RegisterPage />
-            )}
+            )} */}
+            <Register />
           </Route>
 
           <Route
