@@ -1,4 +1,5 @@
 -- Create Tables
+
 CREATE TABLE IF NOT EXISTS "users" (
 	"id" serial NOT NULL UNIQUE,
 	"name" varchar(80) NOT NULL DEFAULT '',
@@ -52,8 +53,8 @@ CREATE TABLE IF NOT EXISTS "blue_forces" (
 
 CREATE TABLE IF NOT EXISTS "missions" (
 	"id" serial NOT NULL UNIQUE,
-	"blue_mission" varchar(40) NOT NULL DEFAULT 'Meeting Engagement',
-	"red_mission" varchar(40) NOT NULL DEFAULT 'Meeting Engagement',
+	"blue_mission" varchar(40) NOT NULL DEFAULT 'meeting engagement',
+	"red_mission" varchar(40) NOT NULL DEFAULT 'meeting engagement',
 	"user_id" int NOT NULL DEFAULT '0',
 	PRIMARY KEY ("id")
 );
@@ -80,3 +81,19 @@ ALTER TABLE "blue_forces" ADD CONSTRAINT "blue_forces_fk4" FOREIGN KEY ("user_id
 ALTER TABLE "missions" ADD CONSTRAINT "missions_fk3" FOREIGN KEY ("user_id") REFERENCES "users"("id");
 ALTER TABLE "missions_equations" ADD CONSTRAINT "missions_equations_fk1" FOREIGN KEY ("mission_id") REFERENCES "missions"("id");
 ALTER TABLE "missions_equations" ADD CONSTRAINT "missions_equations_fk2" FOREIGN KEY ("equation_id") REFERENCES "equation_coefficients"("id");
+
+-- Remove Unnecessary Table "missions_equations"
+DROP TABLE "missions_equations";
+
+-- Redefine "missions" table
+ALTER TABLE "missions" DROP COLUMN "blue_mission";
+ALTER TABLE "missions" DROP COLUMN "red_mission";
+ALTER TABLE "missions" ADD COLUMN "blue_mission_id" int;
+ALTER TABLE "missions" ADD CONSTRAINT "fk_missions_1" FOREIGN KEY ("blue_mission_id") REFERENCES "mission_types"("id");
+ALTER TABLE "missions" ADD COLUMN "red_mission_id" int;
+ALTER TABLE "missions" ADD CONSTRAINT "fk_missions_2" FOREIGN KEY ("red_mission_id") REFERENCES "mission_types"("id");
+ALTER TABLE "missions" ADD COLUMN "equation_id" int;
+ALTER TABLE "missions" ADD CONSTRAINT "fk_missions_3" FOREIGN KEY ("equation_id") REFERENCES "equation_coefficients"("id");
+
+-- import countries, equation_coefficients, mission_types, and units .csv files
+
