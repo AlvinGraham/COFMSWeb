@@ -1,0 +1,26 @@
+"id","blue_mission","red_mission","base","exponent"
+1,"Meeting Engagement","Meeting Engagement",0.18887,0.862
+2,"Meeting Engagement","Hasty Attack",,
+3,"Meeting Engagement","Deliberate Attack",,
+4,"Meeting Engagement","Hasty Defense",,
+5,"Meeting Engagement","Deliberate Defense",,
+6,"Hasty Attack","Meeting Engagement",,
+7,"Hasty Attack","Hasty Attack",,
+8,"Hasty Attack","Deliberate Attack",,
+9,"Hasty Attack","Hasty Defense",0.36632,0.503
+10,"Hasty Attack","Deliberate Defense",0.4746,0.384
+11,"Deliberate Attack","Meeting Engagement",,
+12,"Deliberate Attack","Hasty Attack",,
+13,"Deliberate Attack","Deliberate Attack",,
+14,"Deliberate Attack","Hasty Defense",0.22652,0.596
+15,"Deliberate Attack","Deliberate Defense",0.37615,0.597
+16,"Hasty Defense","Meeting Engagement",,
+17,"Hasty Defense","Hasty Attack",0.26776,0.363
+18,"Hasty Defense","Deliberate Attack",0.28919,0.42
+19,"Hasty Defense","Hasty Defense",,
+20,"Hasty Defense","Deliberate Defense",,
+21,"Deliberate Defense","Meeting Engagement",,
+22,"Deliberate Defense","Hasty Attack",0.09375,1.007
+23,"Deliberate Defense","Deliberate Attack",0.17538,0.692
+24,"Deliberate Defense","Hasty Defense",,
+25,"Deliberate Defense","Deliberate Defense",,
