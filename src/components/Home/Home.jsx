@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 function Home(props) {
   return (
-    <div className="menu-div">
+    <div className="home-div">
       <h2>Home Component</h2>
     </div>
   );

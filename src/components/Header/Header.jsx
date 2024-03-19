@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import MenuIcon from '@mui/icons-material/Menu';
 
+import Menu from '../Menu/Menu.jsx';
+
 import './Header.css';
 
 function Header(props) {
@@ -14,6 +16,7 @@ function Header(props) {
 
       <h2>HEADER Component</h2>
       <MenuIcon />
+      <Menu />
     </div>
   );
 }
