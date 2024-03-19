@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 
 import './App.css';
 import Home from '../Home/Home';
+import Header from '../Header/Header';
 
 function App() {
   const dispatch = useDispatch();
@@ -35,7 +36,7 @@ function App() {
   return (
     <Router>
       <div>
-        <Nav />
+        <Header />
         <Switch>
           {/* Visiting localhost:5173 will redirect to localhost:5173/home */}
           <Redirect
