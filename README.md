@@ -1,8 +1,8 @@
-# Project Title
+# COFMSWeb
 
-One Paragraph of project description goes here
+The Correlation Of Forces and MeanS Web (COFMSWeb) application is a full stack implementation of the US Army force ratio calculator. It allows tactical and operational planners to analyze relative force ratios and determine likelihood of success based on correlation of conventional combat power of opposing forces. End users have access to a predefined array of conventional forces and administrative users have the ability to add, modify, or delete existing forces. Comparisons are displayed graphically and can be exported to PDF for inclusion in other applications or briefing products.
 
-## Getting Started
+<!-- ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
@@ -84,4 +84,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 - Hat tip to anyone whose code was used
 - Inspiration
-- etc
+- etc -->
