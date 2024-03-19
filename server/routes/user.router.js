@@ -5,6 +5,7 @@ const {
 const encryptLib = require('../modules/encryption');
 const pool = require('../modules/pool');
 const userStrategy = require('../strategies/user.strategy');
+const { ADMIN_KEYS } = require('../constants/admin.keys');
 
 const router = express.Router();
 
@@ -17,19 +18,59 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 // Handles POST request with new user data
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted
-router.post('/register', (req, res, next) => {
+router.post('/register', async (req, res, next) => {
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
+  const admin = req.body.admin;
 
-  const queryText = `INSERT INTO "user" (username, password)
-    VALUES ($1, $2) RETURNING id`;
-  pool
-    .query(queryText, [username, password])
-    .then(() => res.sendStatus(201))
-    .catch((err) => {
-      console.log('User registration failed: ', err);
-      res.sendStatus(500);
-    });
+  // check for existing user name
+  usersQuery = `SELECT "name" FROM "users" WHERE "name" = $1;`;
+  console.log('admin:', admin);
+
+  try {
+    // validate adminKey Entry for creation of admin users
+    if (admin === 'true') {
+      console.log('adminKey:', req.body.adminKey);
+      if (!req.body.adminKey) {
+        console.log('No Admin Key provided!');
+        console.log('User registration failed: ');
+        res.sendStatus(511);
+        return;
+      }
+      let adminKeyAuth = false;
+      for (const adminKey of ADMIN_KEYS) {
+        if (adminKey === req.body.adminKey) {
+          adminKeyAuth = true;
+          break;
+        }
+      }
+      if (!adminKeyAuth) {
+        console.log('Unauthorized Admin Key provided!');
+        console.log('User registration failed: ');
+        res.sendStatus(511);
+        return;
+      }
+    }
+
+    // Check for Duplicate Usernames
+    const userList = await pool.query(usersQuery, [req.body.username]);
+    console.log('username:', userList.rows, 'length:', userList.rows.length);
+
+    if (userList.rows.length === 0) {
+      const queryText = `INSERT INTO "users" (name, password, admin)
+      VALUES ($1, $2, $3) RETURNING id`;
+      pool
+        .query(queryText, [username, password, admin])
+        .then(() => res.sendStatus(201));
+    } else {
+      console.log('username already exists:', req.body.username);
+      res.send('User Name Already Exists');
+      return;
+    }
+  } catch (err) {
+    console.log('User registration failed: ', err);
+    res.sendStatus(500);
+  }
 });
 
 // Handles login form authenticate/login POST

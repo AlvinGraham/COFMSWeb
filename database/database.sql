@@ -97,3 +97,6 @@ ALTER TABLE "missions" ADD CONSTRAINT "fk_missions_3" FOREIGN KEY ("equation_id"
 
 -- import countries, equation_coefficients, mission_types, and units .csv files
 
+-- fix users table, password field
+ALTER TABLE "users" ALTER COLUMN "password" SET DATA TYPE varchar(80);
+
