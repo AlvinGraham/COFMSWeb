@@ -26,6 +26,7 @@ import Header from '../Header/Header';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
 import Main from '../Main/Main';
+import Admin from '../Admin/Admin';
 
 function App() {
   const dispatch = useDispatch();
@@ -120,6 +121,20 @@ function App() {
             exact
             path="/main">
             <Main />
+            {/* {user.id ?
+              // If the user is already logged in, 
+              // redirect them to the /user page
+              <Redirect to="/user" />
+              :
+              // Otherwise, show the Landing page
+              <LandingPage />
+            } */}
+          </Route>
+
+          <Route
+            exact
+            path="/admin">
+            <Admin />
             {/* {user.id ?
               // If the user is already logged in, 
               // redirect them to the /user page
