@@ -1,0 +1,38 @@
+#login-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+#login-div label {
+  height: 50px;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+}
+
+#login-div input {
+  height: 50px;
+  width: 400px;
+  background-color: white;
+  color: black;
+  margin: 0;
+  font-size: 24px;
+}
+
+#login-div button {
+  height: 50px;
+  min-width: 250px;
+  background-color: grey;
+}
+
+#login-div .entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 580px;
+  margin: 5px 0px;
+}
