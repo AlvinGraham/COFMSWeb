@@ -5,7 +5,9 @@ import './Menu.css';
 
 function Menu(props) {
   return (
-    <div className="menu-div test-box">
+    <div
+      className="menu-div hidden"
+      id="menu-box">
       <ul>
         <li>Home</li>
         <li>Main</li>

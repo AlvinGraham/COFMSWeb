@@ -1,1 +1,31 @@
+#home-div {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
 
+#home-div .left {
+  width: 650px;
+  height: 800px;
+}
+
+#home-div .right {
+  width: 650px;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.right img {
+  width: 100%;
+}
+
+.right button {
+  margin-top: 100px;
+  height: 50px;
+  width: 250px;
+  background-color: grey;
+  font-size: 24px;
+}

@@ -7,3 +7,7 @@
 .test-box {
   border: 1px solid gold;
 }
+
+div.hidden {
+  display: none;
+}
