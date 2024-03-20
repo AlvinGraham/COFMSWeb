@@ -22,46 +22,43 @@ function Register(props) {
   }
 
   function registerBtnClk() {
+    event.preventDefault();
     console.log('Register Button Clicked');
-
-    // client side validation
-    // No username
-    if (regUsernameInputVal.length < 5 || regUsernameInputVal.length > 40) {
-      Swal.fire({
-        title: 'Error: Bad Username',
-        text: 'Username must be between 5 and 40 characters',
-        icon: 'error',
-        iconColor: 'red',
-        background: 'black',
-        color: 'gold',
+    let ready = false;
+    if (
+      !(regUsernameInputVal.length < 5 || regUsernameInputVal.length > 40) &&
+      !(regPasswordInputVal !== regConfirmPWInputVal)
+    ) {
+      console.log('No Client Registration Errors');
+      dispatch({
+        type: 'REGISTER',
+        payload: {
+          username: regUsernameInputVal,
+          password: regPasswordInputVal,
+          admin: regAdminInputChecked,
+          adminKey: regAdminKeyInputVal,
+        },
       });
-      return;
+      // Successful Registration
+      // if (!errors.registrationMessage) {
+      //   history.push('/main');
+      // }
+    } else {
+      // client side validation
+      // No username
+      if (regUsernameInputVal.length < 5 || regUsernameInputVal.length > 40) {
+        dispatch({ type: 'REGISTRATION_LENGTH_ERROR' });
+      }
+      // password mismatch
+      if (regPasswordInputVal !== regConfirmPWInputVal) {
+        dispatch({ type: 'REGISTRATION_PW_MISMATCH_ERROR' });
+      }
+      // setRegUsernameInputVal('');
+      // setRegPasswordInputVal('');
+      // setRegConfirmPWInputVal('');
+      // setRegAdminKeyInputVal('');
+      // setRegAdminInputChecked(false);
     }
-    // password mismatch
-    if (regPasswordInputVal !== regConfirmPWInputVal) {
-      Swal.fire({
-        title: 'Error: Password Mismatch',
-        text: 'Please correct mismatched passwords.',
-        icon: 'error',
-        iconColor: 'red',
-        background: 'black',
-        color: 'gold',
-      });
-      return;
-    }
-
-    dispatch({
-      type: 'REGISTER',
-      payload: {
-        username: regUsernameInputVal,
-        password: regPasswordInputVal,
-        admin: regAdminInputChecked,
-        adminKey: regAdminKeyInputVal,
-      },
-    });
-
-    // Successful Registration
-    history.push('/');
   }
 
   useEffect(() => {
@@ -70,7 +67,7 @@ function Register(props) {
 
   return (
     <div id="register-div">
-      <form>
+      <form id="registration-form">
         <div className="entry">
           <label htmlFor="regUsernameInput">USERNAME:</label>
           <input
@@ -150,10 +147,18 @@ function Register(props) {
         </div>{' '}
       </form>{' '}
       <button
-        type="button"
+        type="submit"
+        form="registration-form"
         onClick={registerBtnClk}>
         REGISTER
       </button>
+      {errors.registrationMessage && (
+        <h3
+          className="alert"
+          role="alert">
+          {errors.registrationMessage}
+        </h3>
+      )}
     </div>
   );
 }

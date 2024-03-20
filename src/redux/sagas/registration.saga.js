@@ -1,4 +1,5 @@
 import { put, takeLatest } from 'redux-saga/effects';
+
 import axios from 'axios';
 
 // worker Saga: will be fired on "REGISTER" actions
@@ -17,8 +18,12 @@ function* registerUser(action) {
     // after registration or after they log out
     yield put({ type: 'SET_TO_LOGIN_MODE' });
   } catch (error) {
-    console.log('Error with user registration:', error);
-    yield put({ type: 'REGISTRATION_FAILED' });
+    // console.log('Error with user registration:', error);
+    // console.log('specific error:', error.response.data.error);
+    yield put({
+      type: 'REGISTRATION_FAILED',
+      payload: error.response.data.error,
+    });
   }
 }
 

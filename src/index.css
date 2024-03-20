@@ -11,3 +11,7 @@
 .hidden {
   display: none;
 }
+
+.swal2-container > div {
+  border: 2px solid red;
+}

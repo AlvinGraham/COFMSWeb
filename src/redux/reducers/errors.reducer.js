@@ -26,7 +26,11 @@ const registrationMessage = (state = '', action) => {
     case 'REGISTRATION_INPUT_ERROR':
       return 'Choose a username and password!';
     case 'REGISTRATION_FAILED':
-      return "Oops! That didn't work. The username might already be taken. Try again!";
+      return action.payload;
+    case 'REGISTRATION_LENGTH_ERROR':
+      return 'Username must be between 5 and 40 characters.';
+    case 'REGISTRATION_PW_MISMATCH_ERROR':
+      return 'Passwords do not match.';
     default:
       return state;
   }

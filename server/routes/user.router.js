@@ -25,16 +25,16 @@ router.post('/register', async (req, res, next) => {
 
   // check for existing user name
   usersQuery = `SELECT "name" FROM "users" WHERE "name" = $1;`;
-  // console.log('admin:', admin);
+  console.log('admin:', admin, '\nAdminKey:');
 
   try {
     // validate adminKey Entry for creation of admin users
-    if (admin === 'true') {
-      // console.log('adminKey:', req.body.adminKey);
+    if (admin === true) {
+      console.log('adminKey:', req.body.adminKey);
       if (!req.body.adminKey) {
         console.log('No Admin Key provided!');
         console.log('User registration failed: ');
-        res.sendStatus(511);
+        res.status(500).send({ error: 'Admin Key Error.' });
         return;
       }
       let adminKeyAuth = false;
@@ -47,7 +47,7 @@ router.post('/register', async (req, res, next) => {
       if (!adminKeyAuth) {
         console.log('Unauthorized Admin Key provided!');
         console.log('User registration failed: ');
-        res.sendStatus(511);
+        res.status(500).send({ error: 'Admin Key Error.' });
         return;
       }
     }
@@ -64,7 +64,7 @@ router.post('/register', async (req, res, next) => {
         .then(() => res.sendStatus(201));
     } else {
       console.log('username already exists:', req.body.username);
-      res.send('User Name Already Exists');
+      res.status(500).send({ error: 'User Name Already Exists' });
       return;
     }
   } catch (err) {
