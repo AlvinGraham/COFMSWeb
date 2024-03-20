@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import CheckIcon from '@mui/icons-material/Check';
 import NotInterestedIcon from '@mui/icons-material/NotInterested';
 import Swal from 'sweetalert2';
+import { useHistory } from 'react-router-dom';
 
 import './Register.css';
 
@@ -13,6 +14,7 @@ function Register(props) {
   const [regAdminKeyInputVal, setRegAdminKeyInputVal] = useState('');
   const [regAdminInputChecked, setRegAdminInputChecked] = useState(false);
   const dispatch = useDispatch();
+  const history = useHistory();
   const errors = useSelector((store) => store.errors);
 
   function adminChkBoxClk(event) {
@@ -57,6 +59,9 @@ function Register(props) {
         adminKey: regAdminKeyInputVal,
       },
     });
+
+    // Successful Registration
+    history.push('/');
   }
 
   useEffect(() => {

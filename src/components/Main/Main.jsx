@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import './Main.css';
 
 function Main(props) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({ type: 'SET_PAGE', payload: { name: 'Main' } });
+  }, []);
   return (
     <div id="main-div">
       <div className="top">

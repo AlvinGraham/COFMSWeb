@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import './Login.css';
 
 function Login(props) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({ type: 'SET_PAGE', payload: { name: 'Login' } });
+  }, []);
   return (
     <div id="login-div">
       <form>
