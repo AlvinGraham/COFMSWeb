@@ -8,6 +8,6 @@
   border: 1px solid gold;
 }
 
-div.hidden {
+.hidden {
   display: none;
 }

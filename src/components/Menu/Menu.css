@@ -1,7 +1,7 @@
-.menu-div {
-  width: 100px;
+#menu-div {
+  width: 110px;
   position: absolute;
-  top: 50px;
+  top: 40px;
   right: 0px;
   background-color: white;
   color: black;
@@ -12,21 +12,26 @@
   justify-content: space-around;
   gap: 5px;
   padding: 5px 0px;
+  border: 2px solid gold;
 }
 
-.menu-div * {
+#menu-div * {
   color: black;
   background-color: white;
 }
 
-.menu-div ul {
+#menu-div ul {
   list-style-type: none;
   padding: 0;
   /* margin: 10px 0px; */
   margin: 0;
 }
 
-.menu-div li {
+#menu-div li {
   cursor: pointer;
   font-size: 24px;
+}
+
+#menu-div.hidden {
+  display: none;
 }

@@ -3,17 +3,26 @@ import { useSelector } from 'react-redux';
 
 import './Menu.css';
 
-function Menu(props) {
+function Menu({ menuActive, setMenuActive }) {
+  const currentUser = useSelector((store) => store.user);
+
+  // Handle mouse leaving menu area
+  function leaveMenuHdlr() {
+    setMenuActive(false);
+  }
+
   return (
     <div
-      className="menu-div hidden"
-      id="menu-box">
+      className={!menuActive ? 'hidden' : null}
+      id="menu-div"
+      onMouseLeave={leaveMenuHdlr}>
       <ul>
         <li>Home</li>
         <li>Main</li>
         <li>Admin</li>
         <li>About</li>
         <li>Login</li>
+        <li>Logout</li>
       </ul>
     </div>
   );
