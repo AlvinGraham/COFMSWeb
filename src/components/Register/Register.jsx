@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import CheckIcon from '@mui/icons-material/Check';
 import NotInterestedIcon from '@mui/icons-material/NotInterested';
+import Swal from 'sweetalert2';
 
 import './Register.css';
 
@@ -21,11 +22,39 @@ function Register(props) {
   function registerBtnClk() {
     console.log('Register Button Clicked');
 
+    // client side validation
+    // No username
+    if (regUsernameInputVal.length < 5 || regUsernameInputVal.length > 40) {
+      Swal.fire({
+        title: 'Error: Bad Username',
+        text: 'Username must be between 5 and 40 characters',
+        icon: 'error',
+        iconColor: 'red',
+        background: 'black',
+        color: 'gold',
+      });
+      return;
+    }
+    // password mismatch
+    if (regPasswordInputVal !== regConfirmPWInputVal) {
+      Swal.fire({
+        title: 'Error: Password Mismatch',
+        text: 'Please correct mismatched passwords.',
+        icon: 'error',
+        iconColor: 'red',
+        background: 'black',
+        color: 'gold',
+      });
+      return;
+    }
+
     dispatch({
       type: 'REGISTER',
       payload: {
-        username: username,
-        password: password,
+        username: regUsernameInputVal,
+        password: regPasswordInputVal,
+        admin: regAdminInputChecked,
+        adminKey: regAdminKeyInputVal,
       },
     });
   }
@@ -40,6 +69,7 @@ function Register(props) {
             id="regUsernameInput"
             name="regUsernameInput"
             value={regUsernameInputVal}
+            placeholder=" 5-40 Characters..."
             onChange={(event) => {
               setRegUsernameInputVal(event.target.value);
             }}
@@ -86,11 +116,10 @@ function Register(props) {
             className="admin"
             name="regAdminInput"
             id="regAdminInput"
-            // value={regAdminInputChecked}
             checked={regAdminInputChecked}
             onChange={adminChkBoxClk}
           />
-          {/* <span>Value {JSON.stringify(regAdminInputChecked)}</span> */}
+
           {regAdminInputChecked && (
             <div className="entry">
               <label
@@ -109,8 +138,8 @@ function Register(props) {
               />
             </div>
           )}
-        </div>
-      </form>
+        </div>{' '}
+      </form>{' '}
       <button
         type="button"
         onClick={registerBtnClk}>
