@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import CheckIcon from '@mui/icons-material/Check';
 import NotInterestedIcon from '@mui/icons-material/NotInterested';
@@ -58,6 +58,10 @@ function Register(props) {
       },
     });
   }
+
+  useEffect(() => {
+    dispatch({ type: 'SET_PAGE', payload: { name: 'Registration' } });
+  }, []);
 
   return (
     <div id="register-div">

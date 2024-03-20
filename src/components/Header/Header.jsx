@@ -8,12 +8,16 @@ import './Header.css';
 
 function Header(props) {
   const currentUser = useSelector((store) => store.user);
+  const currentPage = useSelector((store) => store.currentPage);
   return (
-    <div className="header-div">
-      <img
-        src="src/components/Header/Army_star.jpg"
-        alt="Army Logo"
-      />
+    <div id="header-div">
+      <div className="left">
+        <img
+          src="src/components/Header/Army_star.jpg"
+          alt="Army Logo"
+        />
+        <h2 className="page"> {currentPage.name}</h2>
+      </div>
 
       {!currentUser.id ? (
         <h2>Non-Authenticated User</h2>

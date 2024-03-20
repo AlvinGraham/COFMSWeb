@@ -1,4 +1,4 @@
-.header-div {
+#header-div {
   contain: layout;
   height: 50px;
   border-bottom: 1px solid gold;
@@ -6,7 +6,15 @@
   align-items: center;
   justify-content: space-between;
 }
-
-.header-div img {
+#header-div .left {
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+#header-div img {
   height: 100%;
+}
+
+#header-div .page {
+  padding-left: 10px;
 }
