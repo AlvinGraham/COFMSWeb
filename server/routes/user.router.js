@@ -25,12 +25,12 @@ router.post('/register', async (req, res, next) => {
 
   // check for existing user name
   usersQuery = `SELECT "name" FROM "users" WHERE "name" = $1;`;
-  console.log('admin:', admin);
+  // console.log('admin:', admin);
 
   try {
     // validate adminKey Entry for creation of admin users
     if (admin === 'true') {
-      console.log('adminKey:', req.body.adminKey);
+      // console.log('adminKey:', req.body.adminKey);
       if (!req.body.adminKey) {
         console.log('No Admin Key provided!');
         console.log('User registration failed: ');

@@ -14,19 +14,28 @@
   align-items: center;
 }
 
+#register-div label.keyLabel {
+  height: 50px;
+  width: 200px;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+}
+
 #register-div input {
   height: 50px;
   width: 400px;
   background-color: white;
   color: black;
   margin: 0;
-  font-size: 24px;
+  font-size: 32px;
 }
 
 #register-div button {
   height: 50px;
   min-width: 250px;
   background-color: grey;
+  color: black;
 }
 
 #register-div .entry {
@@ -35,6 +44,7 @@
   justify-content: space-between;
   width: 580px;
   margin: 5px 0px;
+  contain: layout;
 }
 
 #register-div .entry.admin {
@@ -42,7 +52,7 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
-  width: 580px;
+  width: 800px;
   margin: 5px 0px;
   align-self: center;
 }
@@ -61,4 +71,9 @@
   color: black;
   margin: 0;
   font-size: 24px;
+}
+
+#register-div .validation {
+  position: absolute;
+  right: -30px;
 }
