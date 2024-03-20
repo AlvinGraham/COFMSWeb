@@ -40,9 +40,6 @@ function Register(props) {
         },
       });
       // Successful Registration
-      // if (!errors.registrationMessage) {
-      //   history.push('/main');
-      // }
     } else {
       // client side validation
       // No username

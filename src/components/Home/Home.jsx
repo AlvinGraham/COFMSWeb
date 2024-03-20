@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
+import { useHistory } from 'react-router-dom';
 import './Home.css';
 
 function Home(props) {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     dispatch({ type: 'SET_PAGE', payload: { name: 'Home' } });
@@ -39,7 +40,13 @@ function Home(props) {
           src="src/components/Home/images/tank.jpeg"
           alt="Army Tank"
         />
-        <button id="loginButton">LOGIN</button>
+        <button
+          id="loginButton"
+          onClick={() => {
+            history.push('/login');
+          }}>
+          LOGIN
+        </button>
       </div>
     </div>
   );
