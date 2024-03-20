@@ -35,12 +35,10 @@ function Header(props) {
           {currentUser.admin ? <span>Admin</span> : <span>User</span>})
         </h2>
       )}
-      <div className="right">
-        <h2
-          className="menu-header"
-          onClick={menuClk}>
-          Menu
-        </h2>
+      <div
+        className="right"
+        onClick={menuClk}>
+        <h2 className="menu-header">Menu</h2>
         <MenuIcon />
       </div>
       <Menu

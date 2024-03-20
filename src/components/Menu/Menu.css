@@ -32,6 +32,10 @@
   font-size: 24px;
 }
 
+#menu-div li:hover {
+  background-color: lightgray;
+}
+
 #menu-div.hidden {
   display: none;
 }
