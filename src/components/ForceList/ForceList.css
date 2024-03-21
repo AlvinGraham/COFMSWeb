@@ -7,8 +7,8 @@ th.number {
   width: 30px;
 }
 
-th.quantity {
-  width: 30px;
+th.strength {
+  width: 50px;
 }
 
 th.type {
@@ -28,4 +28,5 @@ th.total {
 }
 th.delete {
   width: 25px;
+  border: none;
 }
