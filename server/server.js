@@ -25,7 +25,7 @@ app.use(passport.session());
 
 // Routes
 app.use('/api/user', userRouter);
-app.use('/api/forces', userRouter);
+app.use('/api/forces', forcesRouter);
 
 // Listen Server & Port
 app.listen(PORT, () => {
