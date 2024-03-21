@@ -24,20 +24,9 @@ function Login(props) {
           password: password,
         },
       });
-      if (errors.loginMessage) {
-        Swal.fire({
-          title: 'Error!!',
-          text: `${errors.loginMessage}`,
-          // icon: 'error',
-          iconColor: 'red',
-          background: 'black',
-          color: 'gold',
-        });
-        setUsername('');
-        setPassword('');
-      } else {
-        history.push('/main');
-      }
+
+      setUsername('');
+      setPassword('');
     } else {
       dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }

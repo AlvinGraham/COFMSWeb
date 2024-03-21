@@ -54,7 +54,7 @@ router.post('/register', async (req, res, next) => {
 
     // Check for Duplicate Usernames
     const userList = await pool.query(usersQuery, [req.body.username]);
-    console.log('username:', userList.rows, 'length:', userList.rows.length);
+    // console.log('username:', userList.rows, 'length:', userList.rows.length);
 
     if (userList.rows.length === 0) {
       const queryText = `INSERT INTO "users" (name, password, admin)
