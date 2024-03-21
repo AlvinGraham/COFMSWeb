@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/blue/:id', (req, res) => {
   // GET route code here
   console.log('Getting Blue Forces for user id:', req.params.id);
-  const queryText = `SELECT "unit_id", "units"."type" AS "type",  "quantity", "strength", "units".country_code AS "country_code" FROM "blue_forces"
+  const queryText = `SELECT "blue_forces".id AS "id", "unit_id", "units"."type" AS "type",  "quantity", "strength", "units".country_code AS "country_code" FROM "blue_forces"
   JOIN "units" ON "blue_forces"."unit_id" = "units"."id"
   WHERE "blue_forces".user_id = $1;`;
   const queryArgs = [req.params.id];
@@ -25,7 +25,7 @@ router.get('/blue/:id', (req, res) => {
 router.get('/red/:id', (req, res) => {
   // GET route code here
   console.log('Getting red Forces for user id:', req.params.id);
-  const queryText = `SELECT "unit_id", "units"."type" AS "type",  "quantity", "strength", "units".country_code AS "country_code" FROM "red_forces"
+  const queryText = `SELECT "red_forces".id AS "id", "unit_id", "units"."type" AS "type",  "quantity", "strength", "units".country_code AS "country_code" FROM "red_forces"
   JOIN "units" ON "red_forces"."unit_id" = "units"."id"
   WHERE "red_forces".user_id = $1;`;
   const queryArgs = [req.params.id];

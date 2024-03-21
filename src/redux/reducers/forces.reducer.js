@@ -2,7 +2,9 @@ import { combineReducers } from 'redux';
 
 const blueForces = (state = ['blue'], action) => {
   switch (action.type) {
-    case 'SET_PAG':
+    case 'CLEAR_BLUE_FORCES':
+      return [];
+    case 'SET_BLUE_FORCES':
       return action.payload;
     default:
       return state;
@@ -11,7 +13,9 @@ const blueForces = (state = ['blue'], action) => {
 
 const redForces = (state = ['red'], action) => {
   switch (action.type) {
-    case 'SET_PAG':
+    case 'CLEAR_RED_FORCES':
+      return [];
+    case 'SET_RED_FORCES':
       return action.payload;
     default:
       return state;

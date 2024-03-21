@@ -7,9 +7,12 @@ import './Main.css';
 
 function Main(props) {
   const dispatch = useDispatch();
+  const user = useSelector((store) => store.user);
 
   useEffect(() => {
     dispatch({ type: 'SET_PAGE', payload: { name: 'Main' } });
+    dispatch({ type: 'GET_BLUE_FORCES', payload: user.id });
+    dispatch({ type: 'GET_RED_FORCES', payload: user.id });
   }, []);
   return (
     <div id="main-div">
