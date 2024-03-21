@@ -14,6 +14,9 @@
 #main-div .force-display {
   height: 500px;
   width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #main-div .result-display {
@@ -56,6 +59,7 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
+  font-size: 32px;
 }
 
 .export button {
@@ -63,4 +67,11 @@
   height: 50px;
   background-color: grey;
   color: black;
+}
+
+#main-div div.add-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
