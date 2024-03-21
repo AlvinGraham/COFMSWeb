@@ -27,6 +27,7 @@ import Login from '../Login/Login';
 import Register from '../Register/Register';
 import Main from '../Main/Main';
 import Admin from '../Admin/Admin';
+import AdminProtectedRoute from '../AdminProtectedRoute/AdminProtectedRoute';
 
 function App() {
   const dispatch = useDispatch();
@@ -51,7 +52,6 @@ function App() {
 
           {/* Visiting localhost:5173/about will show the about page. */}
           <Route
-            // shows AboutPage at all times (logged in or not)
             exact
             path="/about">
             <AboutPage />
@@ -71,35 +71,19 @@ function App() {
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
             exact
-            path="/info">
-            <InfoPage />
+            path="/main">
+            <Main />
           </ProtectedRoute>
 
           <Route
             exact
             path="/login">
-            {/* {user.id ? (
-              // If the user is already logged in,
-              // redirect to the /user page
-              <Redirect to="/user" />
-            ) : (
-              // Otherwise, show the login page
-              <LoginPage />
-            )} */}
             <Login />
           </Route>
 
           <Route
             exact
             path="/registration">
-            {/* {user.id ? (
-              // If the user is already logged in,
-              // redirect them to the /user page
-              <Redirect to="/user" />
-            ) : (
-              // Otherwise, show the registration page
-              <RegisterPage />
-            )} */}
             <Register />
           </Route>
 
@@ -107,43 +91,19 @@ function App() {
             exact
             path="/home">
             <Home />
-            {/* {user.id ?
-              // If the user is already logged in, 
-              // redirect them to the /user page
-              <Redirect to="/user" />
-              :
-              // Otherwise, show the Landing page
-              <LandingPage />
-            } */}
           </Route>
 
-          <Route
+          {/* <Route
             exact
             path="/main">
             <Main />
-            {/* {user.id ?
-              // If the user is already logged in, 
-              // redirect them to the /user page
-              <Redirect to="/user" />
-              :
-              // Otherwise, show the Landing page
-              <LandingPage />
-            } */}
-          </Route>
+          </Route> */}
 
-          <Route
+          <AdminProtectedRoute
             exact
             path="/admin">
             <Admin />
-            {/* {user.id ?
-              // If the user is already logged in, 
-              // redirect them to the /user page
-              <Redirect to="/user" />
-              :
-              // Otherwise, show the Landing page
-              <LandingPage />
-            } */}
-          </Route>
+          </AdminProtectedRoute>
 
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>

@@ -19,8 +19,10 @@ function Menu({ menuActive, setMenuActive }) {
     console.log(`Selection Made: ${selection}`);
     if (selection === 'logout') {
       dispatch({ type: 'LOGOUT' });
+      setMenuActive(false);
       history.push('/');
     } else {
+      setMenuActive(false);
       history.push(`/${selection}`);
     }
     return;

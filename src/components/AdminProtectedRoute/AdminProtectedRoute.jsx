@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import Admin from '../Admin/Admin';
 import Login from '../Login/Login';
 
 // A Custom Wrapper Component -- This will keep our code DRY.
@@ -13,7 +14,7 @@ import Login from '../Login/Login';
 // by checking req.isAuthenticated for authentication
 // and by checking req.user for authorization
 
-function ProtectedRoute({ component, children, ...props }) {
+function AdminProtectedRoute({ component, children, ...props }) {
   const user = useSelector((store) => store.user);
 
   // Component may be passed in as a "component" prop,
@@ -26,7 +27,7 @@ function ProtectedRoute({ component, children, ...props }) {
       // all props like 'exact' and 'path' that were passed in
       // are now passed along to the 'Route' Component
       {...props}>
-      {user.id ? (
+      {user.id && user.admin ? (
         // If the user is logged in, show the protected component
         <ProtectedComponent />
       ) : (
@@ -37,4 +38,4 @@ function ProtectedRoute({ component, children, ...props }) {
   );
 }
 
-export default ProtectedRoute;
+export default AdminProtectedRoute;
