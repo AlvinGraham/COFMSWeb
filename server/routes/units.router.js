@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
   // GET route code here
   console.log('Getting All Units');
-  const queryText = `SELECT * FROM "units";`;
+  const queryText = `SELECT * FROM "units" ORDER BY "id";`;
 
   pool
     .query(queryText)

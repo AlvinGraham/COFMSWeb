@@ -17,17 +17,24 @@ function ForceList({ affiliation }) {
     default:
       console.error('Bad affiliation detected:', affiliation);
   }
-
   const units = useSelector((store) => store.units.units);
+  const user = useSelector((store) => store.user);
+
+  const [addForceActive, SetAddForceActive] = useState(false);
+  const [addForceSelection, SetAddForceSelection] = useState(0);
 
   function addRowClk() {
     console.log('Add Row Clicked');
+    SetAddForceActive(!addForceActive);
+  }
+
+  function forceSelected() {
+    console.log('Force Selected:', +event.target.value);
+    SetAddForceSelection(event.target.value);
   }
 
   return (
     <div className="force-list-div">
-      {/* <h3>{affiliation} Force List</h3>
-      <p>{JSON.stringify(forces)}</p> */}
       <table className="force-row-div">
         <thead>
           <tr>
@@ -58,6 +65,28 @@ function ForceList({ affiliation }) {
         <AddIcon />
         <h3>Add Additional Forces</h3>
       </div>
+      {addForceActive && (
+        <form className="add-row-form">
+          <select
+            id={`unit-list-${affiliation}`}
+            value={addForceSelection}
+            onChange={forceSelected}>
+            <option value={0}>--- Select a Unit to Add ---</option>
+            {units
+              .filter((unit) => {
+                return unit.affiliation === affiliation;
+              })
+              .map((unitType, index) => {
+                return (
+                  <option
+                    key={index}
+                    value={unitType.id}
+                    label={unitType.type}></option>
+                );
+              })}
+          </select>
+        </form>
+      )}
     </div>
   );
 }
