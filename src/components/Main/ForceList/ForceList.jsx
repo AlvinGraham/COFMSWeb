@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import AddIcon from '@mui/icons-material/Add';
 
 import './ForceList.css';
 import ForceRow from './ForceRow/ForceRow';
@@ -15,6 +16,12 @@ function ForceList({ affiliation }) {
       break;
     default:
       console.error('Bad affiliation detected:', affiliation);
+  }
+
+  const units = useSelector((store) => store.units.units);
+
+  function addRowClk() {
+    console.log('Add Row Clicked');
   }
 
   return (
@@ -45,6 +52,12 @@ function ForceList({ affiliation }) {
           })}
         </tbody>
       </table>
+      <div
+        className="add-row"
+        onClick={addRowClk}>
+        <AddIcon />
+        <h3>Add Additional Forces</h3>
+      </div>
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import AddIcon from '@mui/icons-material/Add';
 
 import ForceList from './ForceList/ForceList';
 import './Main.css';
@@ -13,6 +12,7 @@ function Main(props) {
     dispatch({ type: 'SET_PAGE', payload: { name: 'Main' } });
     dispatch({ type: 'GET_BLUE_FORCES', payload: user.id });
     dispatch({ type: 'GET_RED_FORCES', payload: user.id });
+    dispatch({ type: 'GET_UNITS' });
   }, []);
   return (
     <div id="main-div">
@@ -20,10 +20,6 @@ function Main(props) {
         <div className="test-box force-display">
           <h2>Friendly Forces</h2>
           <ForceList affiliation="blue" />
-          <div className="add-row">
-            <AddIcon />
-            <h3>Add Additional Forces</h3>
-          </div>
         </div>
         <div className="test-box result-display">
           <h2>Force Comparison</h2>
@@ -31,10 +27,6 @@ function Main(props) {
         <div className="test-box force-display">
           <h2>Enemy Forces</h2>
           <ForceList affiliation="red" />
-          <div className="add-row">
-            <AddIcon />
-            <h3>Add Additional Forces</h3>
-          </div>
         </div>
       </div>
       <div className="middle">
