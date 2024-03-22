@@ -18,9 +18,9 @@ function ForceList({ affiliation }) {
   }
 
   return (
-    <div>
-      <h3>{affiliation} Force List</h3>
-      <p>{JSON.stringify(forces)}</p>
+    <div className="force-list-div">
+      {/* <h3>{affiliation} Force List</h3>
+      <p>{JSON.stringify(forces)}</p> */}
       <table className="force-row-div">
         <thead>
           <tr>
@@ -38,6 +38,7 @@ function ForceList({ affiliation }) {
             return (
               <ForceRow
                 force={force}
+                affiliation={affiliation}
                 key={index}
               />
             );
