@@ -71,11 +71,31 @@ function* deleteForces(action) {
   }
 }
 
+function* addForces(action) {
+  try {
+    switch (action.payload.affiliation) {
+      case 'blue':
+        yield axios.post('/api/forces', action.payload);
+        yield put({ type: 'GET_BLUE_FORCES', payload: action.payload.user_id });
+        break;
+      case 'red':
+        yield axios.post('/api/forces', action.payload);
+        yield put({ type: 'GET_RED_FORCES', payload: action.payload.user_id });
+        break;
+      default:
+        console.error('ERROR - Invalid Affiliation');
+    }
+  } catch (err) {
+    console.error('ERROR updating forces');
+  }
+}
+
 function* forcesSaga() {
   yield takeLatest('GET_BLUE_FORCES', getBlueForces);
   yield takeLatest('GET_RED_FORCES', getRedForces);
   yield takeLatest('UPDATE_FORCES', putForces);
   yield takeLatest('DELETE_FORCES', deleteForces);
+  yield takeLatest('ADD_FORCES', addForces);
 }
 
 export default forcesSaga;

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import AddIcon from '@mui/icons-material/Add';
 
 import './ForceList.css';
 import ForceRow from './ForceRow/ForceRow';
 
 function ForceList({ affiliation }) {
+  const dispatch = useDispatch();
   let forces;
   switch (affiliation) {
     case 'blue':
@@ -31,6 +32,18 @@ function ForceList({ affiliation }) {
   function forceSelected() {
     console.log('Force Selected:', +event.target.value);
     SetAddForceSelection(event.target.value);
+    if (event.target.value) {
+      //assemble update data
+      const newRow = {
+        user_id: user.id,
+        affiliation,
+        id: event.target.value,
+      };
+      console.log('New Row Payload:', newRow);
+      dispatch({ type: 'ADD_FORCES', payload: newRow });
+      SetAddForceSelection(0);
+      SetAddForceActive(false);
+    }
   }
 
   return (
