@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import AddIcon from '@mui/icons-material/Add';
 
-import ForceList from '../ForceList/ForceList';
+import ForceList from './ForceList/ForceList';
 import './Main.css';
 
 function Main(props) {

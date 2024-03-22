@@ -2,11 +2,8 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import './ForceList.css';
-import { blue } from '@mui/material/colors';
+import ForceRow from './ForceRow/ForceRow';
 
-// Basic functional component structure for React with default state
-// value setup. When making a new component be sure to replace the
-// component name TemplateFunction with the name for the new component.
 function ForceList({ affiliation }) {
   let forces;
   switch (affiliation) {
@@ -28,7 +25,7 @@ function ForceList({ affiliation }) {
         <thead>
           <tr>
             <th className="number">Num</th>
-            <th className="strength">Str</th>
+            <th className="strength">Strength</th>
             <th className="type">Type</th>
             <th className="flag">Flag</th>
             <th className="fe">F.E.</th>
@@ -36,7 +33,16 @@ function ForceList({ affiliation }) {
             <th className="delete"></th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          {forces.map((force, index) => {
+            return (
+              <ForceRow
+                force={force}
+                key={index}
+              />
+            );
+          })}
+        </tbody>
       </table>
     </div>
   );

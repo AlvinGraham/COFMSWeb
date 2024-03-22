@@ -8,7 +8,7 @@ th.number {
 }
 
 th.strength {
-  width: 50px;
+  width: 80px;
 }
 
 th.type {
@@ -20,7 +20,7 @@ th.flag {
 }
 
 th.fe {
-  width: 30px;
+  width: 40px;
 }
 
 th.total {
@@ -29,4 +29,8 @@ th.total {
 th.delete {
   width: 25px;
   border: none;
+}
+
+td {
+  font-size: 12px;
 }
