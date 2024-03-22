@@ -4,9 +4,6 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 import './ForceRow.css';
 
-// Basic functional component structure for React with default state
-// value setup. When making a new component be sure to replace the
-// component name TemplateFunction with the name for the new component.
 function ForceRow({ force, affiliation }) {
   const [quantity, setQuantity] = useState(force.quantity);
   const [strength, setStrength] = useState(force.strength);
@@ -43,6 +40,17 @@ function ForceRow({ force, affiliation }) {
     dispatch({ type: 'UPDATE_FORCES', payload: newRow });
   }
 
+  function deleteRowHdlr() {
+    console.log('Delete Row Icon Clicked');
+    const deadRow = {
+      user_id: user.id,
+      affiliation,
+      id: force.id,
+    };
+    console.log('Row to Delete Payload:', deadRow);
+    dispatch({ type: 'DELETE_FORCES', payload: deadRow });
+  }
+
   return (
     <tr>
       <td>
@@ -72,7 +80,11 @@ function ForceRow({ force, affiliation }) {
       <td>{force.fe}</td>
       <td>{((quantity * strength * force.fe) / 100).toFixed(2)}</td>
       <td>
-        <DeleteForeverIcon fontSize="small" />
+        <DeleteForeverIcon
+          fontSize="small"
+          className="delete-icon"
+          onClick={deleteRowHdlr}
+        />
       </td>
     </tr>
   );

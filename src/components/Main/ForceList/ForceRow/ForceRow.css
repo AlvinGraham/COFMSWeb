@@ -7,3 +7,7 @@ td input.force-strength-input {
   width: 60%;
   margin: 0;
 }
+
+.delete-icon {
+  cursor: pointer;
+}
