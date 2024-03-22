@@ -11,15 +11,36 @@ function ForceRow({ force, affiliation }) {
   const [quantity, setQuantity] = useState(force.quantity);
   const [strength, setStrength] = useState(force.strength);
   const dispatch = useDispatch();
+  const user = useSelector((store) => store.user);
 
   function qtyChangeHdlr() {
     console.log('Quantity Changed');
     setQuantity(event.target.value);
+    //assemble update data
+    const newRow = {
+      user_id: user.id,
+      affiliation,
+      id: force.id,
+      strength,
+      qty: +event.target.value,
+    };
+    console.log('New Row Payload:', newRow);
+    dispatch({ type: 'UPDATE_FORCES', payload: newRow });
   }
 
   function strengthChangeHdlr() {
     console.log('Strength Changed');
     setStrength(event.target.value);
+    //assemble update data
+    const newRow = {
+      user_id: user.id,
+      affiliation,
+      id: force.id,
+      strength: +event.target.value,
+      qty: quantity,
+    };
+    console.log('New Row Payload:', newRow);
+    dispatch({ type: 'UPDATE_FORCES', payload: newRow });
   }
 
   return (

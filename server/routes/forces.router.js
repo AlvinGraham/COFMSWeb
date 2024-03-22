@@ -49,7 +49,7 @@ router.get('/red/:id', (req, res) => {
 router.put('/update', (req, res) => {
   const id = req.body.id;
   const strength = req.body.strength;
-  const qty = req.body.quantity;
+  const qty = req.body.qty;
   const affiliation = req.body.affiliation;
   const queryText = `UPDATE "${affiliation}_forces" SET "strength" = $1, 
   "quantity" = $2 WHERE id = $3;`;
