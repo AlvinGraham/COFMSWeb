@@ -50,7 +50,9 @@ function ForceRow({ force, affiliation }) {
       </td>
       <td>{force.fe}</td>
       <td>{((quantity * strength * force.fe) / 100).toFixed(2)}</td>
-      <td> </td>
+      <td>
+        <DeleteForeverIcon fontSize="small" />
+      </td>
     </tr>
   );
 }
