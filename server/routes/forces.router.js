@@ -103,6 +103,29 @@ router.delete('/delete_red/:id', (req, res) => {
     });
 });
 
+// POST Routes
+// POST insert new force to row
+router.post('/', (req, res) => {
+  const id = req.body.id;
+  const user_id = req.body.user_id;
+  const affiliation = req.body.affiliation;
+  const queryText = `INSERT INTO "${affiliation}_forces" ("unit_id", "user_id")
+    VALUES ($1, $2);`;
+  const queryArgs = [id, user_id];
+  pool
+    .query(queryText, queryArgs)
+    .then((result) => {
+      console.log(
+        `Inserted unit ID:${id} into ${affiliation} for user ${user_id}`
+      );
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.error(`ERROR in ${affiliation} POST:`, err);
+      res.sendStatus(500);
+    });
+});
+
 /**
  * GET route template
  */
