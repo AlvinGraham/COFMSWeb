@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import ForceList from './ForceList/ForceList';
 import './Main.css';
+import PlanningRatios from './PlanningRatios/PlanningRatios';
 
 function Main(props) {
   const dispatch = useDispatch();
@@ -43,12 +44,24 @@ function Main(props) {
       <div className="bottom">
         <div className="test-box info-display">
           <h2>Instructions</h2>
+          <ol>
+            <li>Select type of unit from drop down list.</li>
+            <li>
+              Input number and type. If less than a whole unit use fractions
+              (e.g. 1 Btry = .33 Bns).
+            </li>
+            <li>
+              Use comparison of force ratios (graph) and historical planning
+              ratios.
+            </li>
+            <li>
+              To calculate damage to each unit, select the friendly and enemy
+              mission from the list.
+            </li>
+          </ol>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at ex
-            nec nulla finibus lobortis. Cras in risus leo. Quisque dapibus
-            facilisis magna, et pharetra nunc elementum pellentesque. Mauris at
-            lectus lobortis ligula ullamcorper luctus sit amet quis eros. Fusce
-            porttitor nec lacus sed euismod.
+            <b>Remember:</b> Relative force ratios do NOT necessarily indicate
+            the chance for success for either force
           </p>
         </div>
         <div className="test-box export">
@@ -56,14 +69,15 @@ function Main(props) {
           <button>Export to CSV</button>
         </div>
         <div className="test-box info-display">
-          <h2>Historical Planning Ratios</h2>
-          <p>
+          <h2>Historical Minimum Planning Ratios</h2>
+          {/* <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at ex
             nec nulla finibus lobortis. Cras in risus leo. Quisque dapibus
             facilisis magna, et pharetra nunc elementum pellentesque. Mauris at
             lectus lobortis ligula ullamcorper luctus sit amet quis eros. Fusce
             porttitor nec lacus sed euismod.
-          </p>
+          </p> */}
+          <PlanningRatios />
         </div>
       </div>
     </div>

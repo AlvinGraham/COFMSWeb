@@ -49,6 +49,7 @@
 #main-div .info-display {
   height: 175px;
   width: 500px;
+  padding-left: 10px;
 }
 
 #main-div .export {
@@ -75,4 +76,22 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+
+.info-display li {
+  font-size: 12px;
+}
+
+.info-display h2 {
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.info-display ol {
+  margin-top: 5px;
+  padding-left: 20px;
+}
+
+.info-display p {
+  font-size: 12px;
 }
