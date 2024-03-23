@@ -1,4 +1,6 @@
-const missionsReducer = (state = [], action) => {
+import { combineReducers } from 'redux';
+
+const missions = (state = [], action) => {
   switch (action.type) {
     case 'CLEAR_MISSIONS':
       return [];
@@ -9,4 +11,26 @@ const missionsReducer = (state = [], action) => {
   }
 };
 
-export default missionsReducer;
+const missionList = (state = [], action) => {
+  switch (action.type) {
+    case 'CLEAR_MISSION_LIST':
+      return [];
+    case 'SET_MISSION_LIST':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+const results = (state = [], action) => {
+  switch (action.type) {
+    // case 'CLEAR_MISSION_LIST':
+    //   return [];
+    // case 'SET_MISSION_LIST':
+    //   return action.payload;
+    default:
+      return state;
+  }
+};
+
+export default combineReducers({ missions, missionList, results });

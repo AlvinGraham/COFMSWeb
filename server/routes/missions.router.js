@@ -3,10 +3,10 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 // GET units
-router.get('/', (req, res) => {
+router.get('/list', (req, res) => {
   // GET route code here
-  console.log('Getting All Units');
-  const queryText = `SELECT * FROM "units" ORDER BY "id";`;
+  console.log('Getting Missions');
+  const queryText = `SELECT * FROM "mission_types" ORDER BY "id";`;
 
   pool
     .query(queryText)
