@@ -48,7 +48,7 @@ function ForceList({ affiliation }) {
 
   return (
     <div className="force-list-div">
-      <table className="force-row-div">
+      <table className="force-row-table">
         <thead>
           <tr>
             <th className="number">Num</th>

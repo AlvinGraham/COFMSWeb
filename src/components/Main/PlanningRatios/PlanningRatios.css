@@ -1,0 +1,19 @@
+.planning-table th {
+  font-size: 12px;
+  border: 1px solid goldenrod;
+}
+
+.planning-table th {
+  width: 140px;
+}
+
+.planning-table td {
+  font-size: 12px;
+  border: 1px solid goldenrod;
+}
+
+table.planning-table {
+  margin-bottom: 5px;
+  align-self: center;
+  border-collapse: collapse;
+}

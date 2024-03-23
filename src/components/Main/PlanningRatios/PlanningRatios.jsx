@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
+import './PlanningRatios.css';
+
 // This component compartmentalizes the planning ratios table
 function PlanningRatios(props) {
   const ratioData = [

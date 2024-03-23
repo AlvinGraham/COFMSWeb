@@ -50,6 +50,9 @@
   height: 175px;
   width: 500px;
   padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
 }
 
 #main-div .export {
@@ -88,8 +91,8 @@
 }
 
 .info-display ol {
-  margin-top: 5px;
   padding-left: 20px;
+  margin: 0;
 }
 
 .info-display p {

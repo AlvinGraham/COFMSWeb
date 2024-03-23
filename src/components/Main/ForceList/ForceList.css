@@ -35,21 +35,6 @@ td {
   font-size: 12px;
 }
 
-select {
-  width: 250px;
-  text-align-last: center;
-}
-
-form.add-row-form {
-  display: flex;
-  justify-content: center;
-}
-
-.add-row h3 {
-  margin-bottom: 5px;
-  margin-top: 5px;
-}
-
-table.force-row-div {
+table.force-row-table {
   margin-bottom: 5px;
 }
