@@ -4,6 +4,7 @@ import user from './user.reducer';
 import currentPage from './page.reducer';
 import forces from './forces.reducer';
 import units from './units.reducer';
+import missions from './missions.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   currentPage, // store current active page
   forces, // store current users forces from database
   units, // store units and countries from database
+  missions, // store mission set for current user
 });
 
 export default rootReducer;
