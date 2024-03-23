@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import ForceList from './ForceList/ForceList';
 import './Main.css';
 import PlanningRatios from './PlanningRatios/PlanningRatios';
+import MissionDisplay from './MissionDisplay/MissionDisplay';
 
 function Main(props) {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ function Main(props) {
     dispatch({ type: 'GET_BLUE_FORCES', payload: user.id });
     dispatch({ type: 'GET_RED_FORCES', payload: user.id });
     dispatch({ type: 'GET_UNITS' });
+    dispatch({ type: 'GET_MISSION_LIST' });
   }, []);
   return (
     <div id="main-div">
@@ -32,13 +34,15 @@ function Main(props) {
       </div>
       <div className="middle">
         <div className="test-box mission-display">
-          <h2>Friendly Mission</h2>
+          <MissionDisplay affiliation="blue" />
+          <h3>Friendly Mission</h3>
         </div>
         <div className="test-box mission-info">
           <h2>Mission Info</h2>
         </div>
         <div className="test-box mission-display">
-          <h2>Enemy Mission</h2>
+          <MissionDisplay affiliation="blue" />
+          <h3>Enemy Mission</h3>
         </div>
       </div>
       <div className="bottom">
