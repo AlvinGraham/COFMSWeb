@@ -11,6 +11,7 @@ function Main(props) {
   const user = useSelector((store) => store.user);
   const missionData = useSelector((store) => store.missions.mission);
   const missionsList = useSelector((store) => store.missions.missionList);
+  const results = useSelector((store) => store.missions.results);
 
   useEffect(() => {
     dispatch({ type: 'SET_PAGE', payload: { name: 'Main' } });
@@ -29,7 +30,11 @@ function Main(props) {
         </div>
         <div className="test-box result-display">
           <h2>Force Comparison</h2>
-          <span>{JSON.stringify(missionData)}</span>
+          {JSON.stringify(results)
+            .split(',')
+            .map((ele, index) => (
+              <p key={index}>{ele}</p>
+            ))}
         </div>
         <div className="test-box force-display">
           <h2>Enemy Forces</h2>

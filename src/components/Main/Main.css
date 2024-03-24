@@ -22,7 +22,12 @@
 #main-div .result-display {
   height: 500px;
   width: 400px;
+  display: flex;
+  flex-direction: column;
 }
+
+/* .result-display p {
+} */
 
 #main-div .middle {
   display: flex;

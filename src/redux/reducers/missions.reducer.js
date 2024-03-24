@@ -23,6 +23,8 @@ const missionList = (state = [], action) => {
 };
 
 const results = (state = { loading: true }, action) => {
+  // object containing blue_total_fe, red_total_fe, blue_losses, red_losses,
+  //  blue_ratio, and red_ratio
   switch (action.type) {
     case 'CLEAR_RESULTS':
       return { loading: true };

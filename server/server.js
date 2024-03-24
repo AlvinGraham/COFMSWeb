@@ -12,6 +12,7 @@ const userRouter = require('./routes/user.router');
 const forcesRouter = require('./routes/forces.router');
 const unitsRouter = require('./routes/units.router');
 const missionsRouter = require('./routes/missions.router');
+const resultsRouter = require('./routes/results.router');
 
 // Express Middleware
 app.use(express.json());
@@ -30,6 +31,7 @@ app.use('/api/user', userRouter);
 app.use('/api/forces', forcesRouter);
 app.use('/api/units', unitsRouter);
 app.use('/api/missions', missionsRouter);
+app.use('/api/results', resultsRouter);
 
 // Listen Server & Port
 app.listen(PORT, () => {
