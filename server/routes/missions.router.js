@@ -70,4 +70,50 @@ router.get('/:user_id', async (req, res) => {
   }
 });
 
+// update mission
+// PUT user missions
+router.put('/update', async (req, res) => {
+  const user_id = req.body.user_id;
+  const blue_mission_id = req.body.blue_mission_id;
+  const red_mission_id = req.body.red_mission_id;
+
+  console.log('req.body:', req.body, `\nblue mission id: ${blue_mission_id}`);
+  try {
+    // get mission ids
+    const missionIDQuery = `SELECT "mission" from "mission_types" WHERE "id" = $1;`;
+    // get id from equation_coefficients table
+    const blue_mission = (await pool.query(missionIDQuery, [blue_mission_id]))
+      .rows[0].mission;
+
+    const red_mission = (await pool.query(missionIDQuery, [red_mission_id]))
+      .rows[0].mission;
+
+    console.log('Blue Mission:', blue_mission, '\nRed Mission:', red_mission);
+    const equationQuery = `SELECT "id" from "equation_coefficients"
+        WHERE "red_mission" = $1 AND "blue_mission" = $2;`;
+    const equationQueryArgs = [red_mission, blue_mission];
+    const equationID = (await pool.query(equationQuery, equationQueryArgs))
+      .rows[0].id;
+    console.log('Equation ID:', equationID);
+    // Update Mission Row
+    const updateRowQuery = `UPDATE "missions" SET "blue_mission_id" = $1,
+        "red_mission_id" = $2, "equation_id" = $3
+        WHERE "user_id" = $4;`;
+    const updateRowQueryArgs = [
+      blue_mission_id,
+      red_mission_id,
+      equationID,
+      user_id,
+    ];
+    console.log(updateRowQueryArgs);
+    await pool.query(updateRowQuery, updateRowQueryArgs);
+    console.log('Row Updated');
+
+    res.sendStatus(201);
+  } catch (err) {
+    console.error('ERROR in missions/update PUT:', err);
+    res.sendStatus(500);
+  }
+});
+
 module.exports = router;
