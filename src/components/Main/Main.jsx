@@ -53,10 +53,15 @@ function Main(props) {
               missionsList={missionsList}
             />
           )}
-          <h3>Friendly Mission</h3>
+          <h3>{(+results.blue_losses).toFixed(1)}%</h3>
         </div>
         <div className="test-box mission-info">
-          <h2>Mission Info</h2>
+          <h3>
+            {'<'}- Mission -{'>'}
+          </h3>
+          <h3>
+            {'<'}- Estimated Losses -{'>'}
+          </h3>
         </div>
         <div className="test-box mission-display">
           {!missionData.loading && (
@@ -66,7 +71,7 @@ function Main(props) {
               missionsList={missionsList}
             />
           )}
-          <h3>Enemy Mission</h3>
+          <h3>{(+results.red_losses).toFixed(1)}%</h3>
         </div>
       </div>
       <div className="bottom">

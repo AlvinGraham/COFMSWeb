@@ -37,6 +37,7 @@ function* updateMission(action) {
     yield put({ type: 'CLEAR_MISSION' });
     yield axios.put('/api/missions/update', action.payload);
     yield put({ type: 'GET_MISSION', payload: action.payload.user_id });
+    yield put({ type: 'GET_RESULTS', payload: action.payload.user_id });
   } catch (err) {
     console.error('ERROR updating forces');
   }

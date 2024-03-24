@@ -39,10 +39,12 @@ function* putForces(action) {
       case 'blue':
         yield axios.put('/api/forces/update', action.payload);
         yield put({ type: 'GET_BLUE_FORCES', payload: action.payload.user_id });
+        yield put({ type: 'GET_RESULTS', payload: action.payload.user_id });
         break;
       case 'red':
         yield axios.put('/api/forces/update', action.payload);
         yield put({ type: 'GET_RED_FORCES', payload: action.payload.user_id });
+        yield put({ type: 'GET_RESULTS', payload: action.payload.user_id });
         break;
       default:
         console.error('ERROR - Invalid Affiliation');
@@ -58,10 +60,12 @@ function* deleteForces(action) {
       case 'blue':
         yield axios.delete(`/api/forces/delete_blue/${action.payload.id}`);
         yield put({ type: 'GET_BLUE_FORCES', payload: action.payload.user_id });
+        yield put({ type: 'GET_RESULTS', payload: action.payload.user_id });
         break;
       case 'red':
         yield axios.delete(`/api/forces/delete_red/${action.payload.id}`);
         yield put({ type: 'GET_RED_FORCES', payload: action.payload.user_id });
+        yield put({ type: 'GET_RESULTS', payload: action.payload.user_id });
         break;
       default:
         console.error('ERROR - Invalid Affiliation');
@@ -77,10 +81,12 @@ function* addForces(action) {
       case 'blue':
         yield axios.post('/api/forces', action.payload);
         yield put({ type: 'GET_BLUE_FORCES', payload: action.payload.user_id });
+        yield put({ type: 'GET_RESULTS', payload: action.payload.user_id });
         break;
       case 'red':
         yield axios.post('/api/forces', action.payload);
         yield put({ type: 'GET_RED_FORCES', payload: action.payload.user_id });
+        yield put({ type: 'GET_RESULTS', payload: action.payload.user_id });
         break;
       default:
         console.error('ERROR - Invalid Affiliation');

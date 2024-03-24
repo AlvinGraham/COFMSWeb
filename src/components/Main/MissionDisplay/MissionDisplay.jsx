@@ -25,14 +25,6 @@ function MissionDisplay({ affiliation, missionsList, missionData }) {
 
   console.log('mission Data:', missionData);
 
-  // const [addForceActive, SetAddForceActive] = useState(false);
-  // const [addForceSelection, SetAddForceSelection] = useState(0);
-
-  // function addRowClk() {
-  //   console.log('Add Row Clicked');
-  //   SetAddForceActive(!addForceActive);
-  // }
-
   function missionSelected() {
     console.log('Mission Selected:', +event.target.value);
     setCurrentMission(event.target.value);
@@ -52,7 +44,7 @@ function MissionDisplay({ affiliation, missionsList, missionData }) {
     };
     console.log('New Row Payload:', newRow);
     dispatch({ type: 'UPDATE_MISSION', payload: newRow });
-    dispatch({ type: 'GET_RESULTS', payload: user.id });
+    // dispatch({ type: 'GET_RESULTS', payload: user.id });
   }
 
   useEffect(() => {}, []);
