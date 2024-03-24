@@ -2,7 +2,9 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-// GET units
+const { DEFAULT_MISSION } = require('../constants/defaults');
+
+// GET mission list
 router.get('/list', (req, res) => {
   // GET route code here
   console.log('Getting Missions');
@@ -14,9 +16,58 @@ router.get('/list', (req, res) => {
       res.send(result.rows);
     })
     .catch((err) => {
-      console.error('ERROR in UNITS GET:', err);
+      console.error('ERROR in missions/list GET:', err);
       res.sendStatus(500);
     });
+});
+
+// GET user missions
+router.get('/:user_id', async (req, res) => {
+  const user_id = +req.params.user_id;
+  const queryArgs = [user_id];
+  const queryArgsDefaultMission = [DEFAULT_MISSION];
+  const queryExistingUser = `SELECT * from "missions" WHERE "user_id" = $1;`;
+
+  try {
+    const userResults = (await pool.query(queryExistingUser, queryArgs)).rows;
+    console.log('Existing User: ', userResults, userResults.length);
+
+    let missionID;
+    let equationID;
+
+    if (userResults.length === 0) {
+      // create new user row in missions table
+      // get mission id for 'Meeting Engagement'
+      const queryDefaultMission = `SELECT "id" from "mission_types" WHERE "mission" = $1;`;
+      console.log('Mission:', queryArgsDefaultMission);
+      missionID = (
+        await pool.query(queryDefaultMission, queryArgsDefaultMission)
+      ).rows[0].id;
+      console.log('Default Mission ID:', missionID);
+      // get id from equation_coefficients table
+      const queryEquation = `SELECT "id" from "equation_coefficients" 
+        WHERE "red_mission" = $1 AND "blue_mission" = $2;`;
+      const queryEquationArgs = [DEFAULT_MISSION, DEFAULT_MISSION];
+      equationID = (await pool.query(queryEquation, queryEquationArgs)).rows[0]
+        .id;
+      console.log('Equation ID:', equationID);
+      // Create new row
+      const queryAddNew = `INSERT INTO "missions" ("user_id", "blue_mission_id", "red_mission_id", "equation_id")
+        VALUES ($1, $2, $3, $4);`;
+      const queryAddNewArgs = [user_id, missionID, missionID, equationID];
+      console.log(queryAddNewArgs);
+      await pool.query(queryAddNew, queryAddNewArgs);
+      console.log('New row added');
+    }
+    console.log('Getting Mission Data Row!');
+    const queryText = `SELECT "blue_mission_id", "red_mission_id", "equation_id" FROM "missions" 
+      WHERE "user_id" = $1;`;
+    const missionResponse = await pool.query(queryText, queryArgs);
+    res.send(missionResponse.rows);
+  } catch (err) {
+    console.error('ERROR in missions/:id GET', err);
+    res.sendStatus(500);
+  }
 });
 
 module.exports = router;
