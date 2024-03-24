@@ -17,23 +17,23 @@ function* getMissionList(action) {
   }
 }
 
-function* getMissions(action) {
+function* getMission(action) {
   try {
     // clear any existing blue forces
-    yield put({ type: 'CLEAR_BLUE_FORCES' });
+    // yield put({ type: 'CLEAR_MISSION' });
 
     // get Blue Forces from Server
-    const response = yield axios.get(`/api/forces/blue/${action.payload}`);
+    const response = yield axios.get(`/api/missions/${action.payload}`);
 
     // set store
-    yield put({ type: 'SET_BLUE_FORCES', payload: response.data });
+    yield put({ type: 'SET_MISSION', payload: response.data });
   } catch (err) {
     console.error('ERROR setting getting Blue Forces:', err);
   }
 }
 
 function* missionsSaga() {
-  yield takeLatest('GET_MISSIONS', getMissions);
+  yield takeLatest('GET_MISSION', getMission);
   yield takeLatest('GET_MISSION_LIST', getMissionList);
 }
 

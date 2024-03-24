@@ -9,6 +9,8 @@ import MissionDisplay from './MissionDisplay/MissionDisplay';
 function Main(props) {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
+  const missionData = useSelector((store) => store.missions.mission);
+  const missionsList = useSelector((store) => store.missions.missionList);
 
   useEffect(() => {
     dispatch({ type: 'SET_PAGE', payload: { name: 'Main' } });
@@ -16,6 +18,7 @@ function Main(props) {
     dispatch({ type: 'GET_RED_FORCES', payload: user.id });
     dispatch({ type: 'GET_UNITS' });
     dispatch({ type: 'GET_MISSION_LIST' });
+    dispatch({ type: 'GET_MISSION', payload: user.id });
   }, []);
   return (
     <div id="main-div">
@@ -26,6 +29,7 @@ function Main(props) {
         </div>
         <div className="test-box result-display">
           <h2>Force Comparison</h2>
+          <span>{JSON.stringify(missionData)}</span>
         </div>
         <div className="test-box force-display">
           <h2>Enemy Forces</h2>
@@ -34,14 +38,26 @@ function Main(props) {
       </div>
       <div className="middle">
         <div className="test-box mission-display">
-          <MissionDisplay affiliation="blue" />
+          {!missionData.loading && (
+            <MissionDisplay
+              affiliation="blue"
+              missionData={missionData}
+              missionsList={missionsList}
+            />
+          )}
           <h3>Friendly Mission</h3>
         </div>
         <div className="test-box mission-info">
           <h2>Mission Info</h2>
         </div>
         <div className="test-box mission-display">
-          <MissionDisplay affiliation="blue" />
+          {!missionData.loading && (
+            <MissionDisplay
+              affiliation="red"
+              missionData={missionData}
+              missionsList={missionsList}
+            />
+          )}
           <h3>Enemy Mission</h3>
         </div>
       </div>
@@ -74,13 +90,6 @@ function Main(props) {
         </div>
         <div className="test-box info-display">
           <h2>Historical Minimum Planning Ratios</h2>
-          {/* <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at ex
-            nec nulla finibus lobortis. Cras in risus leo. Quisque dapibus
-            facilisis magna, et pharetra nunc elementum pellentesque. Mauris at
-            lectus lobortis ligula ullamcorper luctus sit amet quis eros. Fusce
-            porttitor nec lacus sed euismod.
-          </p> */}
           <PlanningRatios />
         </div>
       </div>

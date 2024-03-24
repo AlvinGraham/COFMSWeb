@@ -21,17 +21,17 @@ function ForceList({ affiliation }) {
   const units = useSelector((store) => store.units.units);
   const user = useSelector((store) => store.user);
 
-  const [addForceActive, SetAddForceActive] = useState(false);
-  const [addForceSelection, SetAddForceSelection] = useState(0);
+  const [addForceActive, setAddForceActive] = useState(false);
+  const [addForceSelection, setAddForceSelection] = useState(0);
 
   function addRowClk() {
     console.log('Add Row Clicked');
-    SetAddForceActive(!addForceActive);
+    setAddForceActive(!addForceActive);
   }
 
   function forceSelected() {
     console.log('Force Selected:', +event.target.value);
-    SetAddForceSelection(event.target.value);
+    setAddForceSelection(event.target.value);
     if (event.target.value) {
       //assemble update data
       const newRow = {
@@ -41,8 +41,8 @@ function ForceList({ affiliation }) {
       };
       console.log('New Row Payload:', newRow);
       dispatch({ type: 'ADD_FORCES', payload: newRow });
-      SetAddForceSelection(0);
-      SetAddForceActive(false);
+      setAddForceSelection(0);
+      setAddForceActive(false);
     }
   }
 

@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
-const missions = (state = [], action) => {
+const mission = (state = { loading: true }, action) => {
   switch (action.type) {
-    case 'CLEAR_MISSIONS':
+    case 'CLEAR_MISSION':
       return [];
-    case 'SET_SET_MISSIONS':
-      return action.payload;
+    case 'SET_MISSION':
+      return { ...action.payload[0], loading: false };
     default:
       return state;
   }
@@ -33,4 +33,4 @@ const results = (state = [], action) => {
   }
 };
 
-export default combineReducers({ missions, missionList, results });
+export default combineReducers({ mission, missionList, results });
