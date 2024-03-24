@@ -19,6 +19,11 @@
   align-items: center;
 }
 
+.force-display h5 {
+  margin-top: auto;
+  margin-bottom: 10px;
+}
+
 #main-div .result-display {
   height: 500px;
   width: 400px;
@@ -26,6 +31,27 @@
   flex-direction: column;
 }
 
+.ratios-div {
+  display: flex;
+  margin-top: auto;
+  margin-bottom: 10px;
+  justify-content: space-around;
+}
+
+.ratios-div h6 {
+  margin: 0px;
+}
+
+.blue-ratio,
+.red-ratio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.red-ratio {
+  margin-left: auto;
+}
 /* .result-display p {
 } */
 

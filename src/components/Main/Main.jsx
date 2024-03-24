@@ -30,6 +30,10 @@ function Main(props) {
         <div className="test-box force-display">
           <h2>Friendly Forces</h2>
           <ForceList affiliation="blue" />
+          <h5>
+            Friendly Force Equivalent (FE) Total:{' '}
+            {(+results.blue_total_fe).toFixed(2)}
+          </h5>
         </div>
         <div className="test-box result-display">
           <h2>Force Comparison</h2>
@@ -38,10 +42,24 @@ function Main(props) {
             .map((ele, index) => (
               <p key={index}>{ele}</p>
             ))}
+          <div className="ratios-div">
+            <div className="blue-ratio">
+              <h6> Friendly to Enemy Ratio</h6>
+              <h6>{(+results.blue_ratio).toFixed(2)} : 1</h6>
+            </div>
+            <div className="red-ratio">
+              <h6> Enemy to Friendly Ratio</h6>
+              <h6>{(+results.red_ratio).toFixed(2)} : 1</h6>
+            </div>
+          </div>
         </div>
         <div className="test-box force-display">
           <h2>Enemy Forces</h2>
           <ForceList affiliation="red" />
+          <h5>
+            Enemy Force Equivalent (FE) Total:{' '}
+            {(+results.red_total_fe).toFixed(2)}
+          </h5>
         </div>
       </div>
       <div className="middle">
@@ -53,7 +71,11 @@ function Main(props) {
               missionsList={missionsList}
             />
           )}
-          <h3>{(+results.blue_losses).toFixed(1)}%</h3>
+          {+results.blue_losses ? (
+            <h3>{(+results.blue_losses).toFixed(1)}%</h3>
+          ) : (
+            <h3>N/A (Invalid Mission Combination)</h3>
+          )}
         </div>
         <div className="test-box mission-info">
           <h3>
@@ -71,7 +93,11 @@ function Main(props) {
               missionsList={missionsList}
             />
           )}
-          <h3>{(+results.red_losses).toFixed(1)}%</h3>
+          {+results.red_losses ? (
+            <h3>{(+results.red_losses).toFixed(1)}%</h3>
+          ) : (
+            <h3>N/A (Invalid Mission Combination)</h3>
+          )}
         </div>
       </div>
       <div className="bottom">
