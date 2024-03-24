@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 const mission = (state = { loading: true }, action) => {
   switch (action.type) {
     case 'CLEAR_MISSION':
-      return [];
+      return { loading: true };
     case 'SET_MISSION':
       return { ...action.payload[0], loading: false };
     default:

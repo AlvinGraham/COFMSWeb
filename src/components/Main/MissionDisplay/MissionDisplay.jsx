@@ -36,18 +36,22 @@ function MissionDisplay({ affiliation, missionsList, missionData }) {
   function missionSelected() {
     console.log('Mission Selected:', +event.target.value);
     setCurrentMission(event.target.value);
-    // if (event.target.value) {
-    //   //assemble update data
-    //   const newRow = {
-    //     user_id: user.id,
-    //     affiliation,
-    //     id: event.target.value,
-    //   };
-    //   console.log('New Row Payload:', newRow);
+    // update missions
+    //assemble update data
+
+    const newRow = {
+      user_id: user.id,
+      blue_mission_id:
+        affiliation === 'blue'
+          ? +event.target.value
+          : missionData.blue_mission_id,
+      red_mission_id:
+        affiliation === 'red'
+          ? +event.target.value
+          : missionData.red_mission_id,
+    };
+    console.log('New Row Payload:', newRow);
     //   dispatch({ type: 'ADD_FORCES', payload: newRow });
-    //   SetAddForceSelection(0);
-    //   SetAddForceActive(false);
-    // }
   }
 
   useEffect(() => {}, []);
