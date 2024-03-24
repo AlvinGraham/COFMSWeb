@@ -22,10 +22,10 @@ const missionList = (state = [], action) => {
   }
 };
 
-const results = (state = [], action) => {
+const results = (state = { loading: true }, action) => {
   switch (action.type) {
-    // case 'CLEAR_MISSION_LIST':
-    //   return [];
+    case 'CLEAR_RESULTS':
+      return { loading: true };
     // case 'SET_MISSION_LIST':
     //   return action.payload;
     default:

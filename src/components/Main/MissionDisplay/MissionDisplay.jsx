@@ -51,7 +51,7 @@ function MissionDisplay({ affiliation, missionsList, missionData }) {
           : missionData.red_mission_id,
     };
     console.log('New Row Payload:', newRow);
-    //   dispatch({ type: 'ADD_FORCES', payload: newRow });
+    dispatch({ type: 'UPDATE_MISSION', payload: newRow });
   }
 
   useEffect(() => {}, []);
