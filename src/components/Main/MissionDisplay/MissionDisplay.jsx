@@ -52,6 +52,7 @@ function MissionDisplay({ affiliation, missionsList, missionData }) {
     };
     console.log('New Row Payload:', newRow);
     dispatch({ type: 'UPDATE_MISSION', payload: newRow });
+    dispatch({ type: 'GET_RESULTS', payload: user.id });
   }
 
   useEffect(() => {}, []);

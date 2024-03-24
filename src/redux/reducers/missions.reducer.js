@@ -28,8 +28,8 @@ const results = (state = { loading: true }, action) => {
   switch (action.type) {
     case 'CLEAR_RESULTS':
       return { loading: true };
-    // case 'SET_MISSION_LIST':
-    //   return action.payload;
+    case 'SET_RESULTS':
+      return { ...action.payload, loading: false };
     default:
       return state;
   }

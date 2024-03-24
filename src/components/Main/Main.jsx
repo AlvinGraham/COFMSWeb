@@ -13,6 +13,8 @@ function Main(props) {
   const missionsList = useSelector((store) => store.missions.missionList);
   const results = useSelector((store) => store.missions.results);
 
+  console.log('MAIN PROPS', props.length);
+
   useEffect(() => {
     dispatch({ type: 'SET_PAGE', payload: { name: 'Main' } });
     dispatch({ type: 'GET_BLUE_FORCES', payload: user.id });
@@ -20,6 +22,7 @@ function Main(props) {
     dispatch({ type: 'GET_UNITS' });
     dispatch({ type: 'GET_MISSION_LIST' });
     dispatch({ type: 'GET_MISSION', payload: user.id });
+    dispatch({ type: 'GET_RESULTS', payload: user.id });
   }, []);
   return (
     <div id="main-div">
