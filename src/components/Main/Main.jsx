@@ -5,6 +5,7 @@ import ForceList from './ForceList/ForceList';
 import './Main.css';
 import PlanningRatios from './PlanningRatios/PlanningRatios';
 import MissionDisplay from './MissionDisplay/MissionDisplay';
+import ResultsGraph from './ResultsGraph/ResultsGraph';
 
 function Main(props) {
   const dispatch = useDispatch();
@@ -37,11 +38,24 @@ function Main(props) {
         </div>
         <div className="test-box result-display">
           <h2>Force Comparison</h2>
-          {JSON.stringify(results)
+          {/* {JSON.stringify(results)
             .split(',')
             .map((ele, index) => (
               <p key={index}>{ele}</p>
-            ))}
+            ))} */}
+          {!results.loading && (
+            <div id="results-graph">
+              <ResultsGraph
+                data={[
+                  Math.round(+results.blue_total_fe),
+                  Math.round(+results.red_total_fe),
+                ]}
+                // data={results}
+                width={350}
+                height={400}
+              />
+            </div>
+          )}
           <div className="ratios-div">
             <div className="blue-ratio">
               <h6> Friendly to Enemy Ratio</h6>
