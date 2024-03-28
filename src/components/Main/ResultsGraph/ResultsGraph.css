@@ -5,3 +5,7 @@
 text {
   color: white;
 }
+
+polyline {
+  z-index: -1;
+}

@@ -37,6 +37,49 @@ class ResultsGraph extends Component {
       .attr('width', this.props.width)
       .attr('height', this.props.height);
 
+    // render graph lines
+    const xLineHeights = [20, 95, 170, 245, 320];
+    const xLines = xLineHeights.map((d, i) => {
+      return [
+        { x: 110, y: d },
+        { x: 350, y: d },
+      ];
+    });
+
+    const zLines = xLineHeights.map((d, i) => {
+      return [
+        { x: 60, y: d + 50 },
+        { x: 110, y: d },
+      ];
+    });
+
+    const lineData = [
+      ...xLines,
+      ...zLines,
+      [
+        { x: 110, y: 350 },
+        { x: 110, y: 20 },
+      ],
+    ];
+
+    console.log('Line Points:', lineData);
+
+    svg
+      .selectAll('svg')
+      .data(lineData)
+      .enter()
+      .append('polyline')
+      .attr('points', (d, i) => {
+        return d
+          .map((coord) => {
+            return [coord.x, coord.y].join(',');
+          })
+          .join(' ');
+      })
+      .attr('stroke', 'gold');
+
+    // Render scale text
+
     svg
       .selectAll('rect')
       .data(data)
@@ -55,35 +98,21 @@ class ResultsGraph extends Component {
       .enter()
       .append('text')
       .text((d) => d)
-      .attr('x', (d, i) => i * 100 + 75)
-      .attr('y', (d, i) => 350 - scaleFactor * d - 3)
+      .attr('x', (d, i) => i * 130 + 80 + 40)
+      .attr('y', (d, i) => 350 - scaleFactor * d - 3 - 30)
       .attr('fill', 'white');
 
-    const testData = data.map((d, i) => {
-      return [{ x: i * 130 + 80, y: 350 - scaleFactor * d - 30 }];
+    // Render 3D tops
+    const depthTopsData = data.map((d, i) => {
+      return [
+        { x: i * 130 + 80 + 30, y: 350 - scaleFactor * d - 30 },
+        { x: i * 130 + 80 + 30 + 80, y: 350 - scaleFactor * d - 30 },
+        { x: i * 130 + 80 + 80, y: 350 - scaleFactor * d },
+        { x: i * 130 + 80, y: 350 - scaleFactor * d },
+      ];
     });
 
-    console.log('Test Data:', testData);
-
-    const depthTopsData = [
-      [
-        { x: 50, y: 50 },
-        { x: 100, y: 50 },
-        { x: 100, y: 100 },
-        { x: 50, y: 100 },
-      ],
-    ];
-
-    const depthColor = ['darkblue', 'darkred'];
-
-    console.log(
-      'Mapped Coords:',
-      depthTopsData[0]
-        .map((coord) => {
-          return [coord.x, coord.y].join(',');
-        })
-        .join(' ')
-    );
+    const depthTopColor = ['darkblue', 'darkred'];
 
     svg
       .selectAll('polygon')
@@ -98,7 +127,34 @@ class ResultsGraph extends Component {
           .join(' ');
       })
       .attr('stroke', 'gold')
-      .attr('fill', (d, i) => depthColor[i]);
+      .attr('fill', (d, i) => depthTopColor[i]);
+
+    // Render 3D sides
+    const depthSideData = data.map((d, i) => {
+      return [
+        { x: i * 130 + 80 + 80, y: 350 - scaleFactor * d },
+        { x: i * 130 + 80 + 30 + 80, y: 350 - scaleFactor * d - 30 },
+        { x: i * 130 + 80 + 30 + 80, y: 350 - 30 },
+        { x: i * 130 + 80 + 80, y: 350 },
+      ];
+    });
+
+    const depthSideColor = ['darkblue', 'darkred'];
+
+    svg
+      .selectAll('svg')
+      .data(depthSideData)
+      .enter()
+      .append('polygon')
+      .attr('points', (d, i) => {
+        return d
+          .map((coord) => {
+            return [coord.x, coord.y].join(',');
+          })
+          .join(' ');
+      })
+      .attr('stroke', 'gold')
+      .attr('fill', (d, i) => depthSideColor[i]);
   }
   render() {
     return <div id={'#results-graph'}></div>;
