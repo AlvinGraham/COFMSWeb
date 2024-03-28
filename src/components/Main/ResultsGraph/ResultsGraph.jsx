@@ -41,15 +41,15 @@ class ResultsGraph extends Component {
     const xLineHeights = [20, 95, 170, 245, 320];
     const xLines = xLineHeights.map((d, i) => {
       return [
-        { x: 110, y: d },
+        { x: 60, y: d },
         { x: 350, y: d },
       ];
     });
 
     const zLines = xLineHeights.map((d, i) => {
       return [
-        { x: 60, y: d + 50 },
-        { x: 110, y: d },
+        { x: 10, y: d + 50 },
+        { x: 60, y: d },
       ];
     });
 
@@ -57,12 +57,10 @@ class ResultsGraph extends Component {
       ...xLines,
       ...zLines,
       [
-        { x: 110, y: 350 },
-        { x: 110, y: 20 },
+        { x: 60, y: 320 },
+        { x: 60, y: 20 },
       ],
     ];
-
-    console.log('Line Points:', lineData);
 
     svg
       .selectAll('svg')
@@ -79,6 +77,27 @@ class ResultsGraph extends Component {
       .attr('stroke', 'gold');
 
     // Render scale text
+    const textHeights = [20, 95, 170, 245, 320];
+    const textValues = [
+      graphScaleMax.toFixed(0),
+      (graphScaleMax * 0.75).toFixed(0),
+      (graphScaleMax * 0.5).toFixed(0),
+      (graphScaleMax * 0.25).toFixed(0),
+      (graphScaleMax * 0).toFixed(0),
+    ];
+
+    console.log('Text Data:', textValues);
+
+    svg
+      .selectAll('svg')
+      .data(textValues)
+      .enter()
+      .append('text')
+      .text((d) => d)
+      .attr('x', 10)
+      .attr('y', (d, i) => 70 - 3 + i * 75)
+      .attr('transform', (d, i) => `rotate(-45 10 ${70 + i * 75})`)
+      .attr('fill', 'white');
 
     svg
       .selectAll('rect')
@@ -93,7 +112,7 @@ class ResultsGraph extends Component {
       .attr('stroke', 'gold');
 
     svg
-      .selectAll('text')
+      .selectAll('svg')
       .data(data)
       .enter()
       .append('text')

@@ -6,6 +6,6 @@ text {
   color: white;
 }
 
-polyline {
-  z-index: -1;
-}
+/* .graph-label {
+  transform: rotate(-45deg);
+} */
