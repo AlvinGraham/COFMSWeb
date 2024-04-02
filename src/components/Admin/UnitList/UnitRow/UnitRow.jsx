@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
-import './ForceRow.css';
+import './UnitRow.css';
 
 function UnitRow({ force, affiliation }) {
   const [quantity, setQuantity] = useState(force.quantity);

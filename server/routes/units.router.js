@@ -19,4 +19,20 @@ router.get('/', (req, res) => {
     });
 });
 
+// GET countries
+router.get('/countries', (req, res) => {
+  console.log('Getting Countries');
+  const queryText = `SELECT * FROM "countries" ORDER BY "id";`;
+
+  pool
+    .query(queryText)
+    .then((result) => {
+      res.send(result.rows);
+    })
+    .catch((err) => {
+      console.error('ERROR in COUNTRIES GET:', err);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;

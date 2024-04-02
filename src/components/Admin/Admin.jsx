@@ -2,12 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import './Admin.css';
+import UnitList from './UnitList/UnitList';
 
 function Admin(props) {
   const dispatch = useDispatch();
+  const user = useSelector((store) => store.user);
 
   useEffect(() => {
     dispatch({ type: 'SET_PAGE', payload: { name: 'Admin' } });
+    dispatch({ type: 'GET_UNITS' });
+    dispatch({ type: 'GET_COUNTRIES' });
   }, []);
   return (
     <div id="admin-div">
@@ -31,35 +35,7 @@ function Admin(props) {
         </p>
       </div>
       <div className="right test-box">
-        <h1>Force Selection</h1>
-        <div className="unit-list test-box">
-          <table className="unit-row-table">
-            <thead>
-              <tr>
-                <th className="type">Type</th>
-                <th className="flag">Flag</th>
-                <th className="country">Country</th>
-
-                <th className="fe">F.E.</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* {forces.map((force, index) => {
-            return (
-              <ForceRow
-                force={force}
-                affiliation={affiliation}
-                key={index}
-              />
-            );
-          })} */}
-            </tbody>
-          </table>
-        </div>
-        <div className="force-buttons">
-          <button className="admin-button">BLUE</button>
-          <button className="admin-button">RED</button>
-        </div>
+        <UnitList />
       </div>
     </div>
   );
