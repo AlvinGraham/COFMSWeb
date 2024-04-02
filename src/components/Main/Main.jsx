@@ -59,11 +59,19 @@ function Main(props) {
           <div className="ratios-div">
             <div className="blue-ratio">
               <h6> Friendly to Enemy Ratio</h6>
-              <h6>{(+results.blue_ratio).toFixed(2)} : 1</h6>
+              {+results.blue_ratio >= 1 ? (
+                <h6>{(+results.blue_ratio).toFixed(2)} : 1</h6>
+              ) : (
+                <h6>1 : {(1 / +results.blue_ratio).toFixed(2)}</h6>
+              )}
             </div>
             <div className="red-ratio">
               <h6> Enemy to Friendly Ratio</h6>
-              <h6>{(+results.red_ratio).toFixed(2)} : 1</h6>
+              {+results.red_ratio >= 1 ? (
+                <h6>{(+results.red_ratio).toFixed(2)} : 1</h6>
+              ) : (
+                <h6>1 : {(1 / +results.red_ratio).toFixed(2)}</h6>
+              )}
             </div>
           </div>
         </div>

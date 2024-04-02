@@ -4,7 +4,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 import './ForceRow.css';
 
-function ForceRow({ force, affiliation }) {
+function UnitRow({ force, affiliation }) {
   const [quantity, setQuantity] = useState(force.quantity);
   const [strength, setStrength] = useState(force.strength);
   const dispatch = useDispatch();
@@ -91,4 +91,4 @@ function ForceRow({ force, affiliation }) {
   );
 }
 
-export default ForceRow;
+export default UnitRow;

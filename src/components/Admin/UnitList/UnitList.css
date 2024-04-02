@@ -1,0 +1,40 @@
+th {
+  font-size: 12px;
+  border: 1px solid goldenrod;
+}
+
+th.number {
+  width: 50px;
+}
+
+th.strength {
+  width: 80px;
+}
+
+th.type {
+  width: 175px;
+}
+
+th.flag {
+  width: 30px;
+}
+
+th.fe {
+  width: 40px;
+}
+
+th.total {
+  width: 50px;
+}
+th.delete {
+  width: 25px;
+  border: none;
+}
+
+td {
+  font-size: 12px;
+}
+
+table.force-row-table {
+  margin-bottom: 5px;
+}
