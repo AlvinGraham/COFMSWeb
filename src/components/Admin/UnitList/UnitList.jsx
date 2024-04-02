@@ -11,6 +11,8 @@ function UnitList() {
   const units = useSelector((store) => store.units.units);
   const user = useSelector((store) => store.user);
 
+  const [affiliation, setAffiliation] = useState('blue');
+
   return (
     <div className="unit-list test-box">
       <h1>Force Selection</h1>
@@ -25,15 +27,15 @@ function UnitList() {
           </tr>
         </thead>
         <tbody>
-          {/* {forces.map((force, index) => {
+          {units.map((unit, index) => {
             return (
-              <ForceRow
-                force={force}
+              <UnitRow
+                unit={unit}
                 affiliation={affiliation}
                 key={index}
               />
             );
-          })} */}
+          })}
         </tbody>
       </table>
 

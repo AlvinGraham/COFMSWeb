@@ -1,1 +1,34 @@
+.unit-row-table th {
+  font-size: 12px;
+  border: 1px solid goldenrod;
+}
 
+.unit-row-table th.type {
+  width: 300px;
+}
+
+.unit-row-table th.flag {
+  width: 40px;
+}
+
+.unit-row-table th.fe {
+  width: 40px;
+}
+
+.unit-row-table th.country {
+  width: 150px;
+}
+
+td {
+  font-size: 12px;
+}
+
+table.unit-row-table {
+  margin-bottom: 5px;
+  overflow: scroll;
+}
+
+.unit-row-table th,
+.unit-row-table td {
+  margin: 3px 10px;
+}
