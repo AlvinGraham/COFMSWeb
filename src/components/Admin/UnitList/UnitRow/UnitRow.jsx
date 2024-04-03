@@ -8,7 +8,7 @@ function UnitRow({ unit, affiliation, countries }) {
   const user = useSelector((store) => store.user);
 
   return (
-    <tr>
+    <tr value={unit.id}>
       <td className="type">{unit.type}</td>
       <td className="flag">
         <img src={`https://flagcdn.com/w40/${unit.country_code}.jpg`} />

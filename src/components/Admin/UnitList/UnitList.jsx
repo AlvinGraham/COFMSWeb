@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import AddIcon from '@mui/icons-material/Add';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 
 import './UnitList.css';
 import UnitRow from './UnitRow/UnitRow';
@@ -13,6 +17,10 @@ function UnitList() {
   const countries = useSelector((store) => store.units.countries);
 
   const [affiliation, setAffiliation] = useState('blue');
+
+  function affiliationChangeHdlr() {
+    setAffiliation(event.target.value);
+  }
 
   return (
     <div className="unit-list test-box">
@@ -39,17 +47,33 @@ function UnitList() {
                     unit={unit}
                     affiliation={affiliation}
                     key={index}
-                    countries={countries}
+                    countries={countries.countries}
                   />
                 );
               })}
         </tbody>
       </table>
 
-      <div className="force-buttons">
-        <button className="admin-button">BLUE</button>
-        <button className="admin-button">RED</button>
-      </div>
+      <fieldset className="force-buttons">
+        <legend> Unit Affiliation </legend>
+        <label htmlFor="blue-radio">Blue:</label>
+        <input
+          name="affiliation-select"
+          type="radio"
+          id="blue-radio"
+          value={'blue'}
+          onChange={affiliationChangeHdlr}
+          defaultChecked
+        />
+        <label htmlFor="red-radio">Red:</label>
+        <input
+          name="affiliation-select"
+          type="radio"
+          id="red-radio"
+          value={'red'}
+          onChange={affiliationChangeHdlr}
+        />
+      </fieldset>
     </div>
   );
 }
