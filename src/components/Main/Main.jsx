@@ -38,11 +38,6 @@ function Main(props) {
         </div>
         <div className="test-box result-display">
           <h2>Force Comparison</h2>
-          {/* {JSON.stringify(results)
-            .split(',')
-            .map((ele, index) => (
-              <p key={index}>{ele}</p>
-            ))} */}
           {!results.loading && (
             <div id="results-graph">
               <ResultsGraph

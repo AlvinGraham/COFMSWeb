@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 import './UnitRow.css';
 
-function UnitRow({ unit, affiliation }) {
+function UnitRow({ unit, affiliation, countries }) {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
 
@@ -14,7 +13,13 @@ function UnitRow({ unit, affiliation }) {
       <td className="flag">
         <img src={`https://flagcdn.com/w40/${unit.country_code}.jpg`} />
       </td>
-      <td className="country">{unit.country_code}</td>
+      <td className="country">
+        {
+          countries.filter((country) => {
+            return country.country_code === unit.country_code;
+          })[0].name
+        }
+      </td>
 
       <td className="fe">{unit.fe}</td>
     </tr>

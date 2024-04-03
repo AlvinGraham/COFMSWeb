@@ -11,12 +11,12 @@ const units = (state = [], action) => {
   }
 };
 
-const countries = (state = [], action) => {
+const countries = (state = [{ loading: true }], action) => {
   switch (action.type) {
     case 'CLEAR_COUNTRIES':
-      return [];
+      return [{ loading: true }];
     case 'SET_COUNTRIES':
-      return action.payload;
+      return [...action.payload, { loading: false }];
     default:
       return state;
   }

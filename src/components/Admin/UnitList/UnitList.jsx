@@ -10,6 +10,7 @@ function UnitList() {
 
   const units = useSelector((store) => store.units.units);
   const user = useSelector((store) => store.user);
+  const countries = useSelector((store) => store.units.countries);
 
   const [affiliation, setAffiliation] = useState('blue');
 
@@ -27,19 +28,21 @@ function UnitList() {
           </tr>
         </thead>
         <tbody>
-          {units
-            .filter((unit) => {
-              return unit.affiliation === affiliation;
-            })
-            .map((unit, index) => {
-              return (
-                <UnitRow
-                  unit={unit}
-                  affiliation={affiliation}
-                  key={index}
-                />
-              );
-            })}
+          {!countries.loading &&
+            units
+              .filter((unit) => {
+                return unit.affiliation === affiliation;
+              })
+              .map((unit, index) => {
+                return (
+                  <UnitRow
+                    unit={unit}
+                    affiliation={affiliation}
+                    key={index}
+                    countries={countries}
+                  />
+                );
+              })}
         </tbody>
       </table>
 
