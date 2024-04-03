@@ -23,7 +23,7 @@
 #admin-div .right {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: ; */
   width: 750px;
   height: 800px;
 }
@@ -31,7 +31,7 @@
 #admin-div .unit-list {
   width: 90%;
   height: 80%;
-  background-color: slategrey;
+
   align-self: center;
   margin-bottom: 10px;
   display: flex;

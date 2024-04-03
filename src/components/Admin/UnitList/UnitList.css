@@ -3,19 +3,19 @@
   border: 1px solid goldenrod;
 }
 
-.unit-row-table th.type {
+th.type {
   width: 300px;
 }
 
-.unit-row-table th.flag {
+th.flag {
   width: 40px;
 }
 
-.unit-row-table th.fe {
+th.fe {
   width: 40px;
 }
 
-.unit-row-table th.country {
+th.country {
   width: 150px;
 }
 
@@ -25,10 +25,19 @@ td {
 
 table.unit-row-table {
   margin-bottom: 5px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .unit-row-table th,
 .unit-row-table td {
   margin: 3px 10px;
+}
+
+.unit-row-table tbody,
+.unit-row-table thead {
+  display: block;
+}
+.unit-row-table tbody {
+  overflow-y: auto;
+  height: 450px;
 }

@@ -15,7 +15,7 @@ function UnitList() {
 
   return (
     <div className="unit-list test-box">
-      <h1>Force Selection</h1>
+      <h1>Unit Selection List</h1>
       <table className="unit-row-table">
         <thead>
           <tr>
@@ -27,15 +27,19 @@ function UnitList() {
           </tr>
         </thead>
         <tbody>
-          {units.map((unit, index) => {
-            return (
-              <UnitRow
-                unit={unit}
-                affiliation={affiliation}
-                key={index}
-              />
-            );
-          })}
+          {units
+            .filter((unit) => {
+              return unit.affiliation === affiliation;
+            })
+            .map((unit, index) => {
+              return (
+                <UnitRow
+                  unit={unit}
+                  affiliation={affiliation}
+                  key={index}
+                />
+              );
+            })}
         </tbody>
       </table>
 

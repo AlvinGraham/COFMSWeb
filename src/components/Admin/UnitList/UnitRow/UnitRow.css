@@ -11,3 +11,19 @@ td input.force-strength-input {
 .delete-icon {
   cursor: pointer;
 }
+
+td.type {
+  width: 300px;
+}
+
+td.flag {
+  width: 40px;
+}
+
+td.fe {
+  width: 40px;
+}
+
+td.country {
+  width: 150px;
+}

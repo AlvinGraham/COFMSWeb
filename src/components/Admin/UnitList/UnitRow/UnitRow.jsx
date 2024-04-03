@@ -10,13 +10,13 @@ function UnitRow({ unit, affiliation }) {
 
   return (
     <tr>
-      <td>{unit.type}</td>
-      <td>
+      <td className="type">{unit.type}</td>
+      <td className="flag">
         <img src={`https://flagcdn.com/w40/${unit.country_code}.jpg`} />
       </td>
-      <td>{unit.country_code}</td>
+      <td className="country">{unit.country_code}</td>
 
-      <td>{unit.fe}</td>
+      <td className="fe">{unit.fe}</td>
     </tr>
   );
 }
