@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import Swal from 'sweetalert2';
 
 import './Admin.css';
 import UnitList from './UnitList/UnitList';
@@ -7,7 +8,50 @@ import UnitList from './UnitList/UnitList';
 function Admin(props) {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
+  const units = useSelector((store) => store.units.units);
   const [selectedUnit, setSelectedUnit] = useState(0);
+
+  function deleteBtnClk() {
+    const deletedUnit = units.filter((unit) => unit.id === selectedUnit)[0];
+    console.log('Deleted Unit:', deletedUnit);
+    Swal.fire({
+      title: `Deleting ${deletedUnit.type}`,
+      text: `Deleting ${deletedUnit.affiliation} unit ${deletedUnit.type} (FE:${deletedUnit.fe}). This action
+      will permenantly remove it from the server and may affect force lists 
+      of active users!  Are you sure?`,
+      icon: 'warning',
+      color: 'white',
+      background: 'black',
+      showCancelButton: true,
+      cancelButtonText: 'CANCEL',
+      focusCancel: true,
+      showConfirmButton: true,
+      confirmButtonText: 'DELETE',
+      confirmButtonColor: 'red',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log('Delete Button Clicked for id:', selectedUnit);
+        dispatch({ type: 'REMOVE_UNIT', payload: { id: selectedUnit } });
+        Swal.fire({
+          title: 'Deleted!',
+          text: `${deletedUnit.type} deleted from server.`,
+          icon: 'success',
+          iconColor: 'green',
+          color: 'white',
+          background: 'black',
+        });
+      } else if (result.isDismissed) {
+        Swal.fire({
+          title: 'Action Cancelled',
+          text: `${deletedUnit.type} saved from deletion`,
+          icon: 'info',
+          color: 'white',
+          background: 'black',
+        });
+        console.log('Dismissed', result.isDismissed);
+      }
+    });
+  }
 
   useEffect(() => {
     dispatch({ type: 'SET_PAGE', payload: { name: 'Admin' } });
@@ -18,8 +62,13 @@ function Admin(props) {
     <div id="admin-div">
       <div className="left test-box">
         <h1>ADMIN ACTIONS</h1>
-        <button className="admin-button active">ADD UNIT</button>
         <button
+          type="button"
+          className="admin-button active">
+          ADD UNIT
+        </button>
+        <button
+          type="button"
           className={
             selectedUnit ? 'admin-button active' : 'admin-button inactive'
           }
@@ -27,13 +76,15 @@ function Admin(props) {
           EDIT UNIT
         </button>
         <button
+          type="button"
           className={
             selectedUnit ? 'admin-button active' : 'admin-button inactive'
           }
-          disabled={!selectedUnit ? true : false}>
+          disabled={!selectedUnit ? true : false}
+          onClick={deleteBtnClk}>
           DELETE UNIT
         </button>
-        <button className="admin-button">IMPORT CSV</button>
+        <button className="admin-button inactive">IMPORT CSV</button>
         <p>
           Instructions: <br />
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at ex nec

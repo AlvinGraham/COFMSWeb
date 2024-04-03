@@ -17,6 +17,18 @@ function* getUnits(action) {
   }
 }
 
+function* removeUnit(action) {
+  try {
+    // delete unit from database
+    yield axios.delete(`/api/units/${action.payload.id}`);
+
+    // set store
+    yield put({ type: 'GET_UNITS' });
+  } catch (err) {
+    console.error('ERROR deleting UNIT:', err);
+  }
+}
+
 function* getCountries(action) {
   try {
     // clear existing countries
@@ -34,6 +46,7 @@ function* getCountries(action) {
 function* unitsSaga() {
   yield takeLatest('GET_UNITS', getUnits);
   yield takeLatest('GET_COUNTRIES', getCountries);
+  yield takeLatest('REMOVE_UNIT', removeUnit);
 }
 
 export default unitsSaga;
