@@ -9,7 +9,7 @@ import FormLabel from '@mui/material/FormLabel';
 import './UnitList.css';
 import UnitRow from './UnitRow/UnitRow';
 
-function UnitList() {
+function UnitList({ selectedUnit, setSelectedUnit }) {
   const dispatch = useDispatch();
 
   const units = useSelector((store) => store.units.units);
@@ -48,6 +48,8 @@ function UnitList() {
                     affiliation={affiliation}
                     key={index}
                     countries={countries.countries}
+                    selectedUnit={selectedUnit}
+                    setSelectedUnit={setSelectedUnit}
                   />
                 );
               })}

@@ -7,6 +7,7 @@ import UnitList from './UnitList/UnitList';
 function Admin(props) {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
+  const [selectedUnit, setSelectedUnit] = useState(0);
 
   useEffect(() => {
     dispatch({ type: 'SET_PAGE', payload: { name: 'Admin' } });
@@ -33,9 +34,13 @@ function Admin(props) {
           pellentesque. Mauris at lectus lobortis ligula ullamcorper luctus sit
           amet quis eros. Fusce porttitor nec lacus sed euismod
         </p>
+        <p> Currently Selected Unit ID: {selectedUnit}</p>
       </div>
       <div className="right test-box">
-        <UnitList />
+        <UnitList
+          selectedUnit={selectedUnit}
+          setSelectedUnit={setSelectedUnit}
+        />
       </div>
     </div>
   );

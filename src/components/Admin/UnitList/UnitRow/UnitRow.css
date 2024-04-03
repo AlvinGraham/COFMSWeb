@@ -27,3 +27,16 @@ td.fe {
 td.country {
   width: 150px;
 }
+
+.selected td {
+  font-weight: bold;
+  background-color: green;
+}
+
+table.unit-row-table tr:hover {
+  opacity: 0.5;
+}
+
+table.unit-row-table tr {
+  cursor: pointer;
+}

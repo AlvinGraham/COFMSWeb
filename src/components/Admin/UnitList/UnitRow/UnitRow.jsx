@@ -3,12 +3,33 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import './UnitRow.css';
 
-function UnitRow({ unit, affiliation, countries }) {
+function UnitRow({
+  unit,
+  affiliation,
+  countries,
+  selectedUnit,
+  setSelectedUnit,
+}) {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
 
+  function clickRowHdlr() {
+    console.log(
+      'Clicked row with value:',
+      +event.target.parentElement.getAttribute('data-id'),
+      '\nType:',
+      typeof +event.target.parentElement.getAttribute('data-id')
+    );
+    +event.target.parentElement.getAttribute('data-id') !== selectedUnit
+      ? setSelectedUnit(+event.target.parentElement.getAttribute('data-id'))
+      : setSelectedUnit(0);
+  }
+
   return (
-    <tr value={unit.id}>
+    <tr
+      data-id={unit.id}
+      onClick={clickRowHdlr}
+      className="selected">
       <td className="type">{unit.type}</td>
       <td className="flag">
         <img src={`https://flagcdn.com/w40/${unit.country_code}.jpg`} />
