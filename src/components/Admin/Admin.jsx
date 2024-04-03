@@ -18,9 +18,21 @@ function Admin(props) {
     <div id="admin-div">
       <div className="left test-box">
         <h1>ADMIN ACTIONS</h1>
-        <button className="admin-button">ADD UNIT</button>
-        <button className="admin-button">EDIT UNIT</button>
-        <button className="admin-button">DELETE UNIT</button>
+        <button className="admin-button active">ADD UNIT</button>
+        <button
+          className={
+            selectedUnit ? 'admin-button active' : 'admin-button inactive'
+          }
+          disabled={!selectedUnit ? true : false}>
+          EDIT UNIT
+        </button>
+        <button
+          className={
+            selectedUnit ? 'admin-button active' : 'admin-button inactive'
+          }
+          disabled={!selectedUnit ? true : false}>
+          DELETE UNIT
+        </button>
         <button className="admin-button">IMPORT CSV</button>
         <p>
           Instructions: <br />

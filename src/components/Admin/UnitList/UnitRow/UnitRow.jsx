@@ -14,12 +14,12 @@ function UnitRow({
   const user = useSelector((store) => store.user);
 
   function clickRowHdlr() {
-    console.log(
-      'Clicked row with value:',
-      +event.target.parentElement.getAttribute('data-id'),
-      '\nType:',
-      typeof +event.target.parentElement.getAttribute('data-id')
-    );
+    // console.log(
+    //   'Clicked row with value:',
+    //   +event.target.parentElement.getAttribute('data-id'),
+    //   '\nType:',
+    //   typeof +event.target.parentElement.getAttribute('data-id')
+    // );
     +event.target.parentElement.getAttribute('data-id') !== selectedUnit
       ? setSelectedUnit(+event.target.parentElement.getAttribute('data-id'))
       : setSelectedUnit(0);
@@ -29,7 +29,7 @@ function UnitRow({
     <tr
       data-id={unit.id}
       onClick={clickRowHdlr}
-      className="selected">
+      className={selectedUnit === unit.id ? 'selected' : ''}>
       <td className="type">{unit.type}</td>
       <td className="flag">
         <img src={`https://flagcdn.com/w40/${unit.country_code}.jpg`} />

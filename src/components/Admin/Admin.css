@@ -20,6 +20,25 @@
   margin: 5px 0px;
 }
 
+#admin-div .admin-button.inactive {
+  width: 250px;
+  height: 50px;
+  background-color: grey;
+  color: black;
+  font-size: 24px;
+  margin: 5px 0px;
+  opacity: 0.5;
+}
+
+#admin-div .admin-button.active {
+  width: 250px;
+  height: 50px;
+  background-color: grey;
+  color: black;
+  font-size: 24px;
+  margin: 5px 0px;
+}
+
 #admin-div .right {
   display: flex;
   flex-direction: column;
@@ -29,8 +48,8 @@
 }
 
 #admin-div .unit-list {
-  width: 90%;
-  height: 80%;
+  width: 80%;
+  height: 90%;
 
   align-self: center;
   margin-bottom: 10px;
@@ -42,6 +61,7 @@
 #admin-div .force-buttons {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 10px;
   margin-bottom: 20px;
+  margin-top: 20px;
 }

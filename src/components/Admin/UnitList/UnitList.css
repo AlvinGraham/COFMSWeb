@@ -40,4 +40,5 @@ table.unit-row-table {
 .unit-row-table tbody {
   overflow-y: auto;
   height: 450px;
+  border-bottom: 1px solid gold;
 }
