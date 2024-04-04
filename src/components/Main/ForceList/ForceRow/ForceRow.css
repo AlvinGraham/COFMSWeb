@@ -8,6 +8,9 @@ td input.force-strength-input {
   margin: 0;
 }
 
+td.strength-td {
+  width: 20%;
+}
 .delete-icon {
   cursor: pointer;
 }

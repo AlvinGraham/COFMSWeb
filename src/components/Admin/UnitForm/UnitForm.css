@@ -1,0 +1,11 @@
+.unit-form img {
+  width: 80px;
+}
+
+.unit-form .entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 580px;
+  margin: 5px 0px;
+}

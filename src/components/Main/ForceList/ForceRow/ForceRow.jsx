@@ -64,7 +64,7 @@ function ForceRow({ force, affiliation }) {
           onF
         />
       </td>
-      <td>
+      <td className="strength-td">
         <input
           type="number"
           className="force-strength-input"

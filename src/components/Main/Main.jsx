@@ -141,8 +141,8 @@ function Main(props) {
           </p>
         </div>
         <div className="test-box export">
-          <button>Export to PDF</button>
-          <button>Export to CSV</button>
+          <button className="inactive">Export to PDF</button>
+          <button className="inactive">Export to CSV</button>
         </div>
         <div className="test-box info-display">
           <h2>Historical Minimum Planning Ratios</h2>

@@ -4,12 +4,14 @@ import Swal from 'sweetalert2';
 
 import './Admin.css';
 import UnitList from './UnitList/UnitList';
+import UnitForm from './UnitForm/UnitForm';
 
 function Admin(props) {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
   const units = useSelector((store) => store.units.units);
   const [selectedUnit, setSelectedUnit] = useState(0);
+  const [mode, setMode] = useState('add');
 
   function deleteBtnClk() {
     const deletedUnit = units.filter((unit) => unit.id === selectedUnit)[0];
@@ -64,7 +66,10 @@ function Admin(props) {
         <h1>ADMIN ACTIONS</h1>
         <button
           type="button"
-          className="admin-button active">
+          className="admin-button active"
+          onClick={() => {
+            setMode('add');
+          }}>
           ADD UNIT
         </button>
         <button
@@ -72,7 +77,10 @@ function Admin(props) {
           className={
             selectedUnit ? 'admin-button active' : 'admin-button inactive'
           }
-          disabled={!selectedUnit ? true : false}>
+          disabled={!selectedUnit ? true : false}
+          onClick={() => {
+            setMode('edit');
+          }}>
           EDIT UNIT
         </button>
         <button
@@ -100,10 +108,19 @@ function Admin(props) {
         <p> Currently Selected Unit ID: {selectedUnit}</p>
       </div>
       <div className="right test-box">
-        <UnitList
-          selectedUnit={selectedUnit}
-          setSelectedUnit={setSelectedUnit}
-        />
+        {!mode ? (
+          <UnitList
+            selectedUnit={selectedUnit}
+            setSelectedUnit={setSelectedUnit}
+          />
+        ) : (
+          <UnitForm
+            selectedUnit={units.filter((unit) => unit.id === selectedUnit)[0]}
+            setSelectedUnit={setSelectedUnit}
+            mode={mode}
+            setMode={setMode}
+          />
+        )}
       </div>
     </div>
   );

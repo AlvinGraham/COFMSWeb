@@ -58,6 +58,16 @@
   align-items: center;
 }
 
+#admin-div .unit-form {
+  width: 80%;
+  height: 90%;
+
+  align-self: center;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
 #admin-div .force-buttons {
   display: flex;
   justify-content: center;

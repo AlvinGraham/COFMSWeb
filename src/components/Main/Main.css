@@ -118,6 +118,10 @@
   font-size: 24px;
 }
 
+.export button.inactive {
+  opacity: 0.5;
+}
+
 #main-div div.add-row {
   display: flex;
   justify-content: center;

@@ -20,6 +20,7 @@ function UnitList({ selectedUnit, setSelectedUnit }) {
 
   function affiliationChangeHdlr() {
     setAffiliation(event.target.value);
+    setSelectedUnit(0);
   }
 
   return (
