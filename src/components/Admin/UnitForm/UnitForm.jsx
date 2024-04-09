@@ -16,7 +16,7 @@ function UnitForm({ selectedUnit, setSelectedUnit, mode, setMode }) {
   const countries = useSelector((store) => store.units.countries);
 
   const [typeInput, setTypeInput] = useState('');
-  const [feInput, setFeInput] = useState(0);
+  const [feInput, setFeInput] = useState(null);
   const [affiliationInput, setAffiliationInput] = useState('blue');
   const [natInput, setNatInput] = useState('us');
   console.log('Selected Unit:', selectedUnit);
@@ -28,6 +28,10 @@ function UnitForm({ selectedUnit, setSelectedUnit, mode, setMode }) {
 
   function countrySelected() {
     setNatInput(event.target.value);
+  }
+
+  function sbmtBtnClk() {
+    console.log('Submit Button Clicked', selectedUnit);
   }
 
   useEffect(() => {
@@ -81,10 +85,10 @@ function UnitForm({ selectedUnit, setSelectedUnit, mode, setMode }) {
         </select>
       </div>
       <div className="entry">
-        <label htmlFor="country-list">NATIONALITY:</label>
+        <label htmlFor="country-list-input">NATIONALITY:</label>
         {!countries.loading && (
           <select
-            id={`country-list`}
+            id={`country-list-input`}
             value={natInput}
             onChange={countrySelected}>
             <option value={0}>--- Select a Country to Add ---</option>
@@ -98,43 +102,35 @@ function UnitForm({ selectedUnit, setSelectedUnit, mode, setMode }) {
             })}
           </select>
         )}
+
+        {natInput ? (
+          <img src={`https://flagcdn.com/w40/${natInput}.jpg`} />
+        ) : (
+          <></>
+        )}
       </div>
-      {natInput ? (
-        <img src={`https://flagcdn.com/w80/${natInput}.jpg`} />
-      ) : (
-        <></>
-      )}
-      {mode === 'add' ? (
-        <button type="button">ADD</button>
-      ) : (
-        <button type="button">EDIT</button>
-      )}
-      <button
-        type="button"
-        onClick={cancelClk}>
-        CANCEL
-      </button>
+      <div className="admin-form-button-field">
+        {mode === 'add' ? (
+          <button
+            type="button"
+            onClick={sbmtBtnClk}>
+            ADD
+          </button>
+        ) : (
+          <button
+            type="button"
+            onClick={sbmtBtnClk}>
+            EDIT
+          </button>
+        )}
+        <button
+          type="button"
+          onClick={cancelClk}>
+          CANCEL
+        </button>
+      </div>
     </form>
   );
 }
 
 export default UnitForm;
-
-// {addForceActive && (
-//   <form className="add-row-form">
-//     <select
-//       id={`country-list`}
-//       value={natInput}
-//       onChange={countrySelected}>
-//       <option value={0}>--- Select a Country to Add ---</option>
-//       {countries
-//         .map((country, index) => {
-//           return (
-//             <option
-//               key={index}
-//               value={country.country_code}
-//               label={country.name}></option>
-//           );
-//         })}
-//     </select>
-//   </form>

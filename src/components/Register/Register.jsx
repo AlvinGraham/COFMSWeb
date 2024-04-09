@@ -13,6 +13,7 @@ function Register(props) {
   const [regConfirmPWInputVal, setRegConfirmPWInputVal] = useState('');
   const [regAdminKeyInputVal, setRegAdminKeyInputVal] = useState('');
   const [regAdminInputChecked, setRegAdminInputChecked] = useState(false);
+  const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const history = useHistory();
   const errors = useSelector((store) => store.errors);
@@ -61,6 +62,10 @@ function Register(props) {
   useEffect(() => {
     dispatch({ type: 'SET_PAGE', payload: { name: 'Registration' } });
   }, []);
+
+  useEffect(() => {
+    !user.loading && history.push('/main');
+  }, [user.loading]);
 
   return (
     <div id="register-div">

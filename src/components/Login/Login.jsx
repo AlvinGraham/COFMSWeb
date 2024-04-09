@@ -34,7 +34,13 @@ function Login(props) {
 
   useEffect(() => {
     dispatch({ type: 'SET_PAGE', payload: { name: 'Login' } });
+    dispatch({ type: 'UNSET_USER' });
   }, []);
+
+  useEffect(() => {
+    !user.loading && history.push('/main');
+  }, [user.loading]);
+
   return (
     <div id="login-div">
       <form>

@@ -11,7 +11,7 @@ function Admin(props) {
   const user = useSelector((store) => store.user);
   const units = useSelector((store) => store.units.units);
   const [selectedUnit, setSelectedUnit] = useState(0);
-  const [mode, setMode] = useState('add');
+  const [mode, setMode] = useState('');
 
   function deleteBtnClk() {
     const deletedUnit = units.filter((unit) => unit.id === selectedUnit)[0];
@@ -68,6 +68,7 @@ function Admin(props) {
           type="button"
           className="admin-button active"
           onClick={() => {
+            setSelectedUnit(0);
             setMode('add');
           }}>
           ADD UNIT
