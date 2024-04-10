@@ -51,11 +51,6 @@ function Register(props) {
       if (regPasswordInputVal !== regConfirmPWInputVal) {
         dispatch({ type: 'REGISTRATION_PW_MISMATCH_ERROR' });
       }
-      // setRegUsernameInputVal('');
-      // setRegPasswordInputVal('');
-      // setRegConfirmPWInputVal('');
-      // setRegAdminKeyInputVal('');
-      // setRegAdminInputChecked(false);
     }
   }
 

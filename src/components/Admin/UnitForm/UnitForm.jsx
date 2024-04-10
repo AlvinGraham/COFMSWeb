@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
+import Swal from 'sweetalert2';
 
 import './UnitForm.css';
 
@@ -31,7 +27,38 @@ function UnitForm({ selectedUnit, setSelectedUnit, mode, setMode }) {
   }
 
   function sbmtBtnClk() {
-    console.log('Submit Button Clicked', selectedUnit);
+    console.log('Submit Button Clicked', selectedUnit, '\nCountry:', natInput);
+    //package data
+    const newUnit = {
+      id: !selectedUnit ? 0 : selectedUnit.id,
+      type: typeInput,
+      fe: feInput,
+      country_code: natInput,
+    };
+    let submitError = '';
+    //data validation
+    if (newUnit.type.length === 0) {
+      submitError = 'Unit Type is a required field';
+    }
+    if (newUnit.fe <= 0) {
+      submitError = 'Force Equivalent must be a positive value';
+    }
+
+    if (submitError) {
+      Swal.fire({
+        title: `Data Entry Error`,
+        text: submitError,
+        icon: 'warning',
+        color: 'white',
+        background: 'black',
+        showConfirmButton: true,
+        confirmButtonText: 'OK',
+        confirmButtonColor: 'red',
+      });
+      return;
+    }
+
+    console.log('submitting form', newUnit);
   }
 
   useEffect(() => {
@@ -51,6 +78,7 @@ function UnitForm({ selectedUnit, setSelectedUnit, mode, setMode }) {
         <input
           type="text"
           id="type-input"
+          required
           value={typeInput}
           onChange={() => {
             setTypeInput(event.target.value);

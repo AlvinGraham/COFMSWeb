@@ -38,6 +38,50 @@ router.delete('/:id', (req, res) => {
     });
 });
 
+// Add Unit
+router.post('/', (req, res) => {
+  console.log('Adding unit to DB', req.body);
+  const queryText = `INSERT INTO "units" ("type", "fe", "country_code")
+  VALUES ($1, $2, $3);`;
+  const queryArgs = [req.body.type, +req.body.fe, req.body.country_code];
+
+  pool
+    .query(queryText, queryArgs)
+    .then((result) => {
+      console.log(`Unit ${req.body.type} successfully written to DB`);
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.error('ERROR in UNITS POST:', err);
+      res.sendStatus(500);
+    });
+});
+
+// Edit Unit
+router.put('/', (req, res) => {
+  console.log('Editing unit in DB', req.body);
+  const queryText = `UPDATE "units" 
+  SET "type" = $1, "fe" = $2, "country_code" = $3
+  WHERE "id" = $4;`;
+  const queryArgs = [
+    req.body.type,
+    +req.body.fe,
+    req.body.country_code,
+    req.body.id,
+  ];
+
+  pool
+    .query(queryText, queryArgs)
+    .then((result) => {
+      console.log(`Unit ${req.body.type} successfully updated in DB`);
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.error('ERROR in UNITS PUT:', err);
+      res.sendStatus(500);
+    });
+});
+
 // GET countries
 router.get('/countries', (req, res) => {
   console.log('Getting Countries');
