@@ -6,6 +6,7 @@ import './Main.css';
 import PlanningRatios from './PlanningRatios/PlanningRatios';
 import MissionDisplay from './MissionDisplay/MissionDisplay';
 import ResultsGraph from './ResultsGraph/ResultsGraph';
+import FutureFeature from '../FutureFeature/FutureFeature';
 
 function Main(props) {
   const dispatch = useDispatch();
@@ -14,7 +15,9 @@ function Main(props) {
   const missionsList = useSelector((store) => store.missions.missionList);
   const results = useSelector((store) => store.missions.results);
 
-  console.log('MAIN PROPS', props.length);
+  function exportBtnClk() {
+    FutureFeature();
+  }
 
   useEffect(() => {
     dispatch({ type: 'SET_PAGE', payload: { name: 'Main' } });
@@ -28,7 +31,7 @@ function Main(props) {
   return (
     <div id="main-div">
       <div className="top">
-        <div className="test-box force-display">
+        <div className=" force-display">
           <h2>Friendly Forces</h2>
           <ForceList affiliation="blue" />
           <h5>
@@ -36,7 +39,7 @@ function Main(props) {
             {(+results.blue_total_fe).toFixed(2)}
           </h5>
         </div>
-        <div className="test-box result-display">
+        <div className="result-display test-box">
           <h2>Force Comparison</h2>
           {!results.loading && (
             <div id="results-graph">
@@ -70,7 +73,7 @@ function Main(props) {
             </div>
           </div>
         </div>
-        <div className="test-box force-display">
+        <div className=" force-display">
           <h2>Enemy Forces</h2>
           <ForceList affiliation="red" />
           <h5>
@@ -118,7 +121,7 @@ function Main(props) {
         </div>
       </div>
       <div className="bottom">
-        <div className="test-box info-display">
+        <div className=" info-display">
           <h2>Instructions</h2>
           <ol>
             <li>Select type of unit from drop down list.</li>
@@ -140,11 +143,19 @@ function Main(props) {
             the chance for success for either force
           </p>
         </div>
-        <div className="test-box export">
-          <button className="inactive">Export to PDF</button>
-          <button className="inactive">Export to CSV</button>
+        <div className=" export">
+          <button
+            className="inactive"
+            onClick={exportBtnClk}>
+            Export to PDF
+          </button>
+          <button
+            className="inactive"
+            onClick={exportBtnClk}>
+            Export to CSV
+          </button>
         </div>
-        <div className="test-box info-display">
+        <div className=" info-display">
           <h2>Historical Minimum Planning Ratios</h2>
           <PlanningRatios />
         </div>

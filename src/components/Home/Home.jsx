@@ -18,13 +18,18 @@ function Home(props) {
         <p>
           &nbsp; COFMSWeb (Correlation Of Forces and MeanS - Web Implementation)
           is a fullstack application based on a US Army force ratio calculator.
-          It allows staff planners to analyze relative force ratios and
+          It allows military staff planners to analyze relative force ratios and
           determine likelihood of mission success based on correlations of
-          conventional combat power of opposing forces. Users have access to a
-          pre-defined array of conventional forces and administrative users have
-          the ability to add, modify, or delete existing forces. Comparisons are
-          displayed graphically and can be exported to PDF for inclusion in
-          other applications or briefing products.
+          quantitative conventional combat power of opposing forces. Users have
+          access to a pre-defined array of conventional forces and
+          administrative users have the ability to add, modify, or delete
+          existing forces. Comparisons are displayed graphically and can be
+          exported to PDF for inclusion in other applications or briefing
+          products.
+        </p>
+        <p>
+          &nbsp; When you are ready to get started, click the login button, or
+          use the menu at the top right to register if you are a new user!
         </p>
         <img src="src/components/Home/images/staff.jpg" />
       </div>
