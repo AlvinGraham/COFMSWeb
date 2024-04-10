@@ -12,7 +12,7 @@ function UnitForm({ selectedUnit, setSelectedUnit, mode, setMode }) {
   const countries = useSelector((store) => store.units.countries);
 
   const [typeInput, setTypeInput] = useState('');
-  const [feInput, setFeInput] = useState(null);
+  const [feInput, setFeInput] = useState(0);
   const [affiliationInput, setAffiliationInput] = useState('blue');
   const [natInput, setNatInput] = useState('us');
   console.log('Selected Unit:', selectedUnit);
@@ -34,6 +34,7 @@ function UnitForm({ selectedUnit, setSelectedUnit, mode, setMode }) {
       type: typeInput,
       fe: feInput,
       country_code: natInput,
+      affiliation: affiliationInput,
     };
     let submitError = '';
     //data validation
@@ -56,6 +57,21 @@ function UnitForm({ selectedUnit, setSelectedUnit, mode, setMode }) {
         confirmButtonColor: 'red',
       });
       return;
+    }
+
+    switch (mode) {
+      case 'add':
+        dispatch({ type: 'ADD_UNIT', payload: newUnit });
+        setMode('');
+        setSelectedUnit(0);
+        break;
+      case 'edit':
+        dispatch({ type: 'EDIT_UNIT', payload: newUnit });
+        setMode('');
+        setSelectedUnit(0);
+        break;
+      default:
+        console.error('Error in Submission Type', mode);
     }
 
     console.log('submitting form', newUnit);

@@ -29,6 +29,30 @@ function* removeUnit(action) {
   }
 }
 
+function* addUnit(action) {
+  try {
+    // delete unit from database
+    yield axios.post(`/api/units`, action.payload);
+
+    // set store
+    yield put({ type: 'GET_UNITS' });
+  } catch (err) {
+    console.error('ERROR adding UNIT:', err);
+  }
+}
+
+function* editUnit(action) {
+  try {
+    // delete unit from database
+    yield axios.put(`/api/units`, action.payload);
+
+    // set store
+    yield put({ type: 'GET_UNITS' });
+  } catch (err) {
+    console.error('ERROR editing UNIT:', err);
+  }
+}
+
 function* getCountries(action) {
   try {
     // clear existing countries
@@ -47,6 +71,8 @@ function* unitsSaga() {
   yield takeLatest('GET_UNITS', getUnits);
   yield takeLatest('GET_COUNTRIES', getCountries);
   yield takeLatest('REMOVE_UNIT', removeUnit);
+  yield takeLatest('ADD_UNIT', addUnit);
+  yield takeLatest('EDIT_UNIT', editUnit);
 }
 
 export default unitsSaga;

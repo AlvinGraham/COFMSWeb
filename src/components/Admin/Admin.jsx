@@ -34,6 +34,7 @@ function Admin(props) {
       if (result.isConfirmed) {
         console.log('Delete Button Clicked for id:', selectedUnit);
         dispatch({ type: 'REMOVE_UNIT', payload: { id: selectedUnit } });
+        setSelectedUnit(0);
         Swal.fire({
           title: 'Deleted!',
           text: `${deletedUnit.type} deleted from server.`,
