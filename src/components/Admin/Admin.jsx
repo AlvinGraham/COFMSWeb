@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import './Admin.css';
 import UnitList from './UnitList/UnitList';
 import UnitForm from './UnitForm/UnitForm';
+import FutureFeature from '../FutureFeature/FutureFeature';
 
 function Admin(props) {
   const dispatch = useDispatch();
@@ -56,6 +57,10 @@ function Admin(props) {
     });
   }
 
+  function importBtnClk() {
+    FutureFeature();
+  }
+
   useEffect(() => {
     dispatch({ type: 'SET_PAGE', payload: { name: 'Admin' } });
     dispatch({ type: 'GET_UNITS' });
@@ -94,20 +99,44 @@ function Admin(props) {
           onClick={deleteBtnClk}>
           DELETE UNIT
         </button>
-        <button className="admin-button inactive">IMPORT CSV</button>
-        <p>
-          Instructions: <br />
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at ex nec
-          nulla finibus lobortis. Cras in risus leo. Quisque dapibus facilisis
-          magna, et pharetra nunc elementum pellentesque. Mauris at lectus
-          lobortis ligula ullamcorper luctus sit amet quis eros. Fusce porttitor
-          nec lacus sed euismod. Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Ut at ex nec nulla finibus lobortis. Cras in risus
-          leo. Quisque dapibus facilisis magna, et pharetra nunc elementum
-          pellentesque. Mauris at lectus lobortis ligula ullamcorper luctus sit
-          amet quis eros. Fusce porttitor nec lacus sed euismod
-        </p>
-        <p> Currently Selected Unit ID: {selectedUnit}</p>
+        <button
+          className="admin-button inactive"
+          onClick={importBtnClk}>
+          IMPORT CSV
+        </button>
+        <div className="admin-instructions">
+          <h2>Admin Instructions:</h2>
+
+          {/* <p> Currently Selected Unit ID: {selectedUnit}</p> */}
+          <ul>
+            <li>
+              <b>Add:</b> To add a unit, click the{' '}
+              <span className="button-queue">ADD UNIT</span> button and complete
+              the data entry form. All fields are required and Force Equivalent
+              must be positive.
+            </li>
+            <li>
+              <b>Unit Selection (for Edit or Delete options):</b>The Unit
+              Selection List on the right displays all currently currently
+              available units by affiliation (select Blue or Red by the radio
+              button). Click a unit to select it (selected unit will{' '}
+              <span className="select-unit-queue">GREEN</span>).
+            </li>
+            <li>
+              <b>Edit:</b> To edit a unit once a unit has been selected, click
+              the <span className="button-queue">EDIT UNIT</span> button. The
+              data entry form will populate with the current values. Make any
+              changes to the form remembering that all fields are required and
+              Force Equivalent must be positive.{' '}
+            </li>
+            <li>
+              <b>Delete:</b> To delete a unit that has been selected, click the{' '}
+              <span className="button-queue">DELETE UNIT</span> button. Either
+              confirm or cancel in the popup. This action is permanent when
+              confirmed.
+            </li>
+          </ul>
+        </div>
       </div>
       <div className="right">
         {!mode ? (
