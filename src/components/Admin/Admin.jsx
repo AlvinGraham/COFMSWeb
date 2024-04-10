@@ -63,7 +63,7 @@ function Admin(props) {
   }, []);
   return (
     <div id="admin-div">
-      <div className="left test-box">
+      <div className="left">
         <h1>ADMIN ACTIONS</h1>
         <button
           type="button"
@@ -109,7 +109,7 @@ function Admin(props) {
         </p>
         <p> Currently Selected Unit ID: {selectedUnit}</p>
       </div>
-      <div className="right test-box">
+      <div className="right">
         {!mode ? (
           <UnitList
             selectedUnit={selectedUnit}

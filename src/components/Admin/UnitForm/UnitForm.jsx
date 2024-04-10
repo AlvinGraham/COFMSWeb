@@ -87,7 +87,7 @@ function UnitForm({ selectedUnit, setSelectedUnit, mode, setMode }) {
   }, []);
 
   return (
-    <form className="unit-form test-box">
+    <form className="unit-form">
       <h1>Data Entry Form</h1>
       <div className="entry">
         <label htmlFor="type-input">TYPE:</label>
@@ -172,6 +172,19 @@ function UnitForm({ selectedUnit, setSelectedUnit, mode, setMode }) {
           onClick={cancelClk}>
           CANCEL
         </button>
+      </div>
+      <div className="data-entry-images">
+        {mode === 'add' ? (
+          <img
+            src="src/components/Admin/UnitForm/images/tankFactory.jpeg"
+            alt="Tank Factory"
+          />
+        ) : (
+          <img
+            src="src/components/Admin/UnitForm/images/tankRepair.jpeg"
+            alt="Tank Maintenance"
+          />
+        )}
       </div>
     </form>
   );

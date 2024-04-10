@@ -24,7 +24,7 @@ function UnitList({ selectedUnit, setSelectedUnit }) {
   }
 
   return (
-    <div className="unit-list test-box">
+    <div className="unit-list">
       <h1>Unit Selection List</h1>
       <table className="unit-row-table">
         <thead>

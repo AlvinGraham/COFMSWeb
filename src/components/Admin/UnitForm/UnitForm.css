@@ -1,10 +1,14 @@
-div.unit-form {
+form.unit-form {
   display: flex;
   flex-direction: column;
   padding: 5px;
 }
 .unit-form img {
   width: 60px;
+}
+
+.unit-form h1 {
+  align-self: center;
 }
 
 .unit-form .entry {
@@ -49,4 +53,13 @@ div.admin-form-button-field {
   display: flex;
   justify-content: center;
   gap: 5px;
+}
+
+.admin-form-button-field button {
+  margin-top: 10px;
+}
+
+.data-entry-images img {
+  width: 100%;
+  margin-top: 20px;
 }
