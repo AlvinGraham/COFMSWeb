@@ -1,0 +1,22 @@
+#about-div {
+  display: flex;
+
+  gap: 50px;
+}
+
+#about-div .left {
+  width: 600px;
+  margin-left: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+#about-div p {
+  text-indent: 4ch;
+  text-align: justify;
+}
+
+.left img {
+  height: 200px;
+  width: auto;
+}
