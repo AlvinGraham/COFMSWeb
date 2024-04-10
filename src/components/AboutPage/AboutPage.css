@@ -11,12 +11,36 @@
   flex-direction: column;
 }
 
+#about-div .right {
+  width: 600px;
+  margin-left: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
 #about-div p {
   text-indent: 4ch;
   text-align: justify;
 }
 
-.left img {
+img.red-bull {
   height: 200px;
   width: auto;
+}
+
+.developer-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.whats-next li {
+  font-size: 20px;
+}
+
+div.bottom {
+  margin-top: auto;
+}
+
+div.developer-text {
+  width: 50%;
 }

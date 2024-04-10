@@ -48,12 +48,47 @@ function AboutPage() {
           and provide constructive feedback if you are so inclined.{' '}
         </p>
         <img
+          className="red-bull"
           src="src/components/AboutPage/images/redBulls.jpeg"
           alt="Red Bulls Attack!"
         />
       </div>
       <div className="right">
         <h2>What's next for COFMSWeb?</h2>
+        <ul className="whats-next">
+          <li>Add functionality for PDF Exports.</li>
+          <li>Add functionality for CSV Exports of user Force Lists.</li>
+          <li>Add functionality for CSV Imports of Unit Lists.</li>
+          <li>Improve Responsive design.</li>
+          <li>Streamline back end (compiled code language - C#?)</li>
+          <li>Develop desktop application</li>
+        </ul>
+        <div className="bottom">
+          <h3>Developer Notes</h3>
+          <p>
+            Alvin Graham, the developer of this application is a retired US Army
+            and Marine Corps Veteran who enjoys creating technical solutioins to
+            problems, programming, and bringing order from chaos. He resides in
+            Minnesota with his family and can generally be found involved in
+            random nerdery. If you have constructive feedback for this
+            application, he a can be reached at AlvinGraham777@gmail.com.{' '}
+          </p>
+          <div className="developer-info">
+            <div className="developer-text">
+              <p>
+                A special thank you goes out to the instructors and staff at
+                Prime Digital Academy who enabled me to actualize this
+                application. My most heartfelt thank you goes out to the men and
+                women I served with, especially those in the 34ID plans cell
+                that helped inceptualize this idea and kept it alive; you know
+                who you are!
+              </p>
+            </div>
+            <div>
+              <img src="src/components/AboutPage/images/dev.jpg" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
