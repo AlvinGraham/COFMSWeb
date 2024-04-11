@@ -48,7 +48,7 @@ function AboutPage() {
           and provide constructive feedback if you are so inclined.{' '}
         </p>
         <img
-          className="red-bull"
+          id="red-bull"
           src="src/components/AboutPage/images/redBulls.jpeg"
           alt="Red Bulls Attack!"
         />
@@ -59,6 +59,7 @@ function AboutPage() {
           <li>Add functionality for PDF Exports.</li>
           <li>Add functionality for CSV Exports of user Force Lists.</li>
           <li>Add functionality for CSV Imports of Unit Lists.</li>
+          <li>Improve User Interface Styling</li>
           <li>Improve Responsive design.</li>
           <li>Streamline back end (compiled code language - C#?)</li>
           <li>Develop desktop application</li>
