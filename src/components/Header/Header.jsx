@@ -21,7 +21,7 @@ function Header(props) {
     <div id="header-div">
       <div className="left">
         <img
-          src="src/components/Header/Army_star.jpg"
+          src="/images/Army_star.jpg"
           alt="Army Logo"
         />
         <h2 className="page"> {currentPage.name}</h2>
