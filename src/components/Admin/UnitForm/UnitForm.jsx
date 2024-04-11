@@ -176,12 +176,12 @@ function UnitForm({ selectedUnit, setSelectedUnit, mode, setMode }) {
       <div className="data-entry-images">
         {mode === 'add' ? (
           <img
-            src="src/components/Admin/UnitForm/images/tankFactory.jpeg"
+            src="/images/tankFactory.jpeg"
             alt="Tank Factory"
           />
         ) : (
           <img
-            src="src/components/Admin/UnitForm/images/tankRepair.jpeg"
+            src="/images/tankRepair.jpeg"
             alt="Tank Maintenance"
           />
         )}

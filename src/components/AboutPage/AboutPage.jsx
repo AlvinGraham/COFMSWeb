@@ -49,7 +49,7 @@ function AboutPage() {
         </p>
         <img
           id="red-bull"
-          src="src/components/AboutPage/images/redBulls.jpeg"
+          src="/images/redBulls.jpeg"
           alt="Red Bulls Attack!"
         />
       </div>
@@ -86,7 +86,7 @@ function AboutPage() {
               </p>
             </div>
             <div>
-              <img src="src/components/AboutPage/images/dev.jpg" />
+              <img src="/images/dev.jpg" />
             </div>
           </div>
         </div>
