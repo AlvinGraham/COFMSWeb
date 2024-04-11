@@ -31,11 +31,11 @@ function Home(props) {
           &nbsp; When you are ready to get started, click the login button, or
           use the menu at the top right to register if you are a new user!
         </p>
-        <img src="src/components/Home/images/staff.jpg" />
+        <img src="/images/staff.jpg" />
       </div>
       <div className="right">
         <img
-          src="src/components/Home/images/tank.jpeg"
+          src="/images/tank.jpeg"
           alt="Army Tank"
         />
         <button
