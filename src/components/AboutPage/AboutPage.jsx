@@ -30,17 +30,17 @@ function AboutPage() {
         <p>
           COFMSWeb uses data from a 2015 version of the Force Ratio Calculator
           spreadsheet for unit Force Equivalent (FE) values, mission types, and
-          loss estimates. As such, the data set is limited to that to force
-          structures of that era, but the abillity to add new units with user
-          defined FEs is available in this application. Determining the FE of
-          any given unit is both an art and a science and it is not the
-          developers intent to challenge the values in the curretn dataset (they
-          were used for years to good effect). The science in determining FEs is
-          available to the developer but is beyond the scope of this project and
-          in fact probably deserves it's own application. The structure of the
-          database is built as to be extensible on the back end to new data sets
-          for more modern force structures, expanded mission sets, and loss
-          estimate calculations.
+          loss estimates. As such, the data set is limited to force structures
+          of that era, but the abillity to add new units with user defined FEs
+          is available in this application. Determining the FE of any given unit
+          is both an art and a science and it is not the developers intent to
+          challenge the values in the current dataset (they were used for years
+          to good effect). The science in determining FEs is available to the
+          developer but is beyond the scope of this project and in fact probably
+          deserves it's own application. The structure of the database is built
+          as to be extensible on the back end to new data sets for more modern
+          force structures, expanded mission sets, and loss estimate
+          calculations.
         </p>
         <p>
           The target audience of this application is armed force maneuver staff
@@ -60,7 +60,6 @@ function AboutPage() {
           <li>Add functionality for CSV Exports of user Force Lists.</li>
           <li>Add functionality for CSV Imports of Unit Lists.</li>
           <li>Improve User Interface Styling</li>
-          <li>Improve Responsive design.</li>
           <li>Streamline back end (compiled code language - C#?)</li>
           <li>Develop desktop application</li>
         </ul>
@@ -68,7 +67,7 @@ function AboutPage() {
           <h3>Developer Notes</h3>
           <p>
             Alvin Graham, the developer of this application is a retired US Army
-            and Marine Corps Veteran who enjoys creating technical solutioins to
+            and Marine Corps Veteran who enjoys creating technical solutions to
             problems, programming, and bringing order from chaos. He resides in
             Minnesota with his family and can generally be found involved in
             random nerdery. If you have constructive feedback for this
