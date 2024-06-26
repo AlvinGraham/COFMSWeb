@@ -1,6 +1,7 @@
 # COFMSWeb
 
 ## Currently Deployed on [Heroku](https://secure-fjord-13978-5605dedb9ef8.herokuapp.com/)
+### Presentation on [LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7187088322463203329/)
 
 The Correlation Of Forces and MeanS Web (COFMSWeb) application is a full stack implementation of the US Army force ratio calculator. It allows tactical and operational planners to analyze relative force ratios and determine likelihood of success based on correlation of conventional combat power of opposing forces. End users have access to a predefined array of conventional forces and administrative users have the ability to add, modify, or delete existing forces. Comparisons are displayed graphically and can be exported to PDF for inclusion in other applications or briefing products.
 
