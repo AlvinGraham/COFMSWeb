@@ -18,7 +18,7 @@ let pool;
 if (process.env.DATABASE_CONNECTION_OBJECT) {
   let connectionObj;
   connectionObj = JSON.parse(process.env.DATABASE_CONNECTION_OBJECT);
-  connectionObj.ssl = { rejectetUnauthorized: false };
+  // connectionObj.ssl = { rejectetUnauthorized: false };
   pool = new pg.Pool(connectionObj);
 } else if (process.env.DATABASE_URL) {
   pool = new pg.Pool({
